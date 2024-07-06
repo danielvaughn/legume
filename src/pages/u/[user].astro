@@ -1,0 +1,305 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Toggle from "../../components/Toggle.astro";
+
+const experience = [
+  {
+    title: "Senior DX Engineer",
+    company: "NextEra Mobility",
+    dates: "Oct 2022 - Present",
+    achievements: [
+      {
+        link: "",
+        description:
+          "Built a structured logger to improve incident response and resolution",
+        skills: ["Python"],
+      },
+      {
+        description:
+          "Introduced audits and other mechanisms to improve platform security",
+        skills: ["Python", "Bash"],
+      },
+      {
+        description: "Increased deployment velocity from weekly to daily",
+        skills: ["CircleCI", "Helm", "Kubernetes"],
+      },
+      {
+        description:
+          "Implemented synthetic monitoring across all products to help satisfy our 99.5% uptime SLA",
+        skills: ["TypeScript"],
+      },
+    ],
+  },
+  {
+    title: "Founding Engineer",
+    company: "RealTrade",
+    dates: "June 2021 - Sep 2022",
+    achievements: [
+      {
+        description:
+          "Built a performant real estate search experience with real-time chat features",
+        skills: ["TypeScript", "React"],
+      },
+      {
+        description:
+          "Built a replication pipeline for real estate listing data",
+        skills: ["TypeScript", "Python"],
+      },
+      {
+        description:
+          "Designed and implemented dynamically rendered marketing images for real estate agents",
+        skills: ["Typescript"],
+      },
+      {
+        description:
+          "Listened to customer feedback and iterated on product features, achieving 20% MoM user growth",
+        skills: ["Product Development"],
+      },
+      {
+        description:
+          "Worked with a board of advisors to develop the business model for the company",
+        skills: ["Business Development"],
+      },
+    ],
+  },
+  {
+    title: "Senior Fullstack Engineer",
+    company: "HUMAN Security Inc",
+    dates: "Dec 2016 - May 2021",
+    achievements: [
+      {
+        description: "Led the dashboard team as EM",
+        skills: ["management"],
+      },
+      {
+        description: "Built and maintained a dashboard for fraud analysis",
+        skills: ["JavaScript", "Angular", "React"],
+      },
+      {
+        description:
+          "Worked with UX designers to implement scheduled and ad hoc customer reporting",
+        skills: ["cross-functional collaboration"],
+      },
+      {
+        description:
+          "Created a data visualization framework to improve rendering performance by 300%",
+        skills: ["JavaScript"],
+      },
+      {
+        description:
+          "Collaborated with data engineers to achieve a p90 response time of 3s for all customer queries",
+        skills: ["NodeJS", "Druid"],
+      },
+    ],
+  },
+  {
+    title: "Fullstack Engineer",
+    company: "TradeIt",
+    dates: "May 2015 - Nov 2016",
+    achievements: [
+      {
+        description: "Designed and built the TradeIt marketing website",
+        skills: ["HTML", "CSS", "JavaScript"],
+      },
+      {
+        description:
+          "Built a JavaScript SDK to embed and enable stock trading on any website",
+        skills: ["JavaScript"],
+      },
+      {
+        description:
+          "Developed an iOS SDK to enable and embed stock trading on native apps",
+        skills: ["Objective-C"],
+      },
+    ],
+  },
+  {
+    title: "Frontend Developer",
+    company: "Kapitall",
+    dates: "Mar 2014 - Apr 2015",
+    achievements: [
+      {
+        description:
+          "Developed and maintained drag-and-drop stock trading tools",
+        skills: ["HTML", "CSS", "JavaScript"],
+      },
+      {
+        description:
+          "Built real-time stock trading features for the Kapitall backend",
+        skills: ["Groovy", "SQL"],
+      },
+    ],
+  },
+  {
+    title: "Junior Frontend Developer",
+    company: "The Walt Disney Company",
+    dates: "Jan 2013 - Feb 2014",
+    achievements: [
+      {
+        description: "Built internal tracking tools for content moderation",
+        skills: ["HTML", "CSS", "JavaScript"],
+      },
+    ],
+  },
+];
+---
+
+<Layout title="Welcome to Astro.">
+  <header class="text-center mt-8 max-w-3xl mx-auto px-5 md:px-0">
+    <h1 class="text-3xl font-bold tracking-wide">Daniel Vaughn</h1>
+    <nav>
+      <ul class="flex items-baseline justify-center flex-wrap">
+        <li>
+          <a
+            class="text-blue-700 underline whitespace-nowrap"
+            href="tel:+19015819998"
+          >
+            901-581-9998
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-blue-700 underline whitespace-nowrap"
+            href="mailto:danielbvaughn@gmail.com"
+          >
+            danielbvaughn@gmail.com
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-blue-700 underline whitespace-nowrap"
+            href="https://www.linkedin.com/in/vaughndaniel"
+          >
+            linkedin.com/in/vaughndaniel
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-blue-700 underline whitespace-nowrap"
+            href="https://www.github.com/danielvaughn"
+          >
+            github.com/danielvaughn
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0" data-hide-skills>
+    <section class="mt-8">
+      <header
+        class="flex items-center justify-between border-black border-b-2 pb-1"
+      >
+        <h2 class="uppercase font-bold tracking-wide">Experience</h2>
+
+        <span class="flex justify-end items-center gap-x-3">
+          <Toggle id="achievements" label="Achievements" initial={true} />
+          <Toggle id="skills" label="Skills" />
+        </span>
+      </header>
+
+      {
+        experience.map((job) => (
+          <article class="mt-5">
+            <header class="font-bold flex flex-wrap items-baseline justify-between">
+              <span class="flex items-baseline">
+                <h3 class="whitespace-nowrap">{job.title}</h3>
+                <span class="px-1 text-neutral-400">|</span>
+                <span class="whitespace-nowrap">{job.company}</span>
+              </span>
+              <span class="whitespace-nowrap">{job.dates}</span>
+            </header>
+            <ul class="list-disc pl-6 mt-1 achievements">
+              {job.achievements.map((achievement) => {
+                const skillList = achievement.skills.join(", ");
+
+                if (achievement.link) {
+                  return (
+                    <li class="marker:text-blue-500">
+                      <a
+                        href={achievement.link}
+                        class="hover:text-blue-700 hover:underline"
+                      >
+                        {achievement.description}
+                      </a>
+                      {skillList !== "" && (
+                        <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
+                          ({skillList})
+                        </span>
+                      )}
+                    </li>
+                  );
+                }
+
+                return (
+                  <li>
+                    {achievement.description}
+                    {skillList !== "" && (
+                      <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
+                        ({skillList})
+                      </span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="mt-8">
+      <h2 class="uppercase font-bold border-black border-b-2 tracking-wide">
+        Education
+      </h2>
+
+      <article class="mt-5 font-bold flex items-baseline justify-between">
+        <span class="flex items-baseline">
+          <span class="whitespace-nowrap">Bachelor of Fine Arts</span>
+          <span class="px-1 text-neutral-400">|</span>
+          <h3 class="whitespace-nowrap">Memphis College of Art</h3>
+        </span>
+        <span>Sept 2004 - Sept 2008</span>
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  header nav ul li:after {
+    content: "•";
+    @apply px-1 text-neutral-300;
+  }
+
+  header nav ul li:last-of-type:after {
+    content: "";
+  }
+
+  main[data-hide-skills] .skills {
+    display: none;
+  }
+
+  main[data-hide-achievements] .achievements {
+    display: none;
+  }
+</style>
+
+<script>
+  const main = document.querySelector("main")!;
+
+  function listenToToggle(toggleId: string) {
+    const button = document.getElementById(toggleId);
+
+    button?.addEventListener("click", (e) => {
+      if (main.hasAttribute(`data-hide-${toggleId}`)) {
+        button.classList.add("enabled");
+        main.removeAttribute(`data-hide-${toggleId}`);
+      } else {
+        button.classList.remove("enabled");
+        main.setAttribute(`data-hide-${toggleId}`, "true");
+      }
+    });
+  }
+
+  listenToToggle("skills");
+  listenToToggle("achievements");
+</script>
