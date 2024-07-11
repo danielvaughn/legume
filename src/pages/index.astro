@@ -6,9 +6,57 @@ import Layout from "../layouts/Layout.astro";
   <header class="p-5">
     <h1 class="font-bold tracking-wide text-lg mb-2">Legumé</h1>
     <p class="flex items-end tracking-wide">
-      The fanciest f<span class="leading-none">***</span>ing resume engine on
-      the web.
+      Stop wasting time on your resume.
     </p>
     <a href="/u/danielvaughn" class="text-blue-700 underline">See an example</a>
   </header>
+  <section class="px-5 py-3 max-w-2xl">
+    Online resumes suck:
+    <ul class="pl-1 negatives">
+      <li>
+        Writing and maintaining them are a pain, and LinkedIn doesn't really
+        help.
+      </li>
+      <li>It's not clear what to include in them or how to format them.</li>
+      <li>
+        They don't capture your <i>story</i> - you are more than a list of bullet
+        points!
+      </li>
+    </ul>
+    <p class="my-3 text-pretty">
+      Legumé offers a fully interactive resume that lets you tell your story in
+      as much depth as you want. It basically turns your resume into a website.
+      Afterwards, you can easily generate and maintain abbreviated PDFs that are
+      custom-tailored to highlight a different aspect of your work history.
+    </p>
+    <p class="my-3 text-pretty">
+      This means you
+      <b>write your resume once</b>, and we take care of the rest.
+    </p>
+    <h2 class="mt-5 mb-2 text-lg font-bold tracking-wide">Pricing</h2>
+    <p class="text-pretty">
+      You can sign up for free, write and host your resume, and generate a PDF.
+    </p>
+    <p class="mt-2 text-pretty">
+      If you want to tailor multiple PDF versions, and if you want to be
+      included in a list of resumes that we provide to recruiters, we kindly ask
+      for $3/month billed annually.
+    </p>
+    <p class="mt-2 text-pretty">
+      If you follow us on X/Twitter and share a post about us, you'll get a
+      promo code for 30% off. You can't beat $2/month :)
+    </p>
+  </section>
 </Layout>
+
+<style>
+  .negatives li {
+    @apply flex items-center gap-x-2;
+  }
+
+  .negatives li:before {
+    @apply block leading-none mt-[2px];
+    content: "❌";
+    font-size: 7px;
+  }
+</style>

@@ -39,7 +39,7 @@ const { Content } = highlight;
       <h3
         class="uppercase font-bold tracking-wide border-black border-b-2 pb-1"
       >
-        All achievements at {highlight.frontmatter.job_title} | {
+        All achievements as {highlight.frontmatter.job_title} at {
           highlight.frontmatter.company
         }
       </h3>
@@ -49,7 +49,7 @@ const { Content } = highlight;
             if (j.frontmatter.id === highlight.frontmatter.id) {
               return (
                 <li class="text-neutral-500 select-none">
-                  {j.frontmatter.title} | {j.frontmatter.company}
+                  {j.frontmatter.title}
                 </li>
               );
             }
@@ -57,16 +57,25 @@ const { Content } = highlight;
             return (
               <li>
                 <a
-                  href={`/u/danielvaughn/j/${j.frontmatter.id}`}
+                  href={`/u/danielvaughn/h/${j.frontmatter.id}`}
                   class="hover:text-blue-700 hover:underline cursor-pointer"
                 >
-                  {j.frontmatter.title} | {j.frontmatter.company}
+                  {j.frontmatter.title}
                 </a>
               </li>
             );
           })
         }
       </ul>
+      <div class="mt-5">
+        <a
+          href={`/u/danielvaughn/j/${highlight.frontmatter.job_id}`}
+          class="text-blue-700 underline dark:text-blue-500"
+        >
+          Read more about my experiences as {highlight.frontmatter.job_title} at
+          {highlight.frontmatter.company}
+        </a>
+      </div>
     </footer>
   </main>
 </Layout>
@@ -78,5 +87,9 @@ const { Content } = highlight;
 
   .job-content a {
     @apply text-blue-700 hover:underline dark:text-blue-500;
+  }
+
+  .job-content code {
+    @apply text-sm text-emerald-200 bg-emerald-900 px-1 py-px;
   }
 </style>
