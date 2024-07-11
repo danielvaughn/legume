@@ -1,0 +1,44 @@
+---
+const { id, label, initial } = Astro.props;
+---
+
+<button
+  id={id}
+  type="button"
+  class="inline-flex items-center gap-x-0.5 rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset badge enabled"
+>
+  {label}
+  <span class="group relative -mr-1 h-3.5 w-3.5 rounded-sm icon-wrapper">
+    <span class="sr-only">Remove</span>
+    <svg viewBox="0 0 14 14" class="h-3.5 w-3.5 icon">
+      <path d="M4 4l6 6m0-6l-6 6"></path>
+    </svg>
+    <span class="absolute -inset-1"></span>
+  </span>
+</button>
+
+<style>
+  .badge {
+    @apply bg-gray-50 text-gray-600 ring-gray-500/10 tracking-wider;
+  }
+
+  .badge:hover .icon-wrapper {
+    @apply bg-gray-500/20;
+  }
+
+  .badge .icon {
+    @apply stroke-gray-600/50 group-hover:stroke-gray-600/75;
+  }
+
+  .badge.enabled {
+    @apply bg-blue-50 text-blue-600 ring-blue-500/10;
+  }
+
+  .badge.enabled:hover .icon-wrapper {
+    @apply bg-blue-500/20;
+  }
+
+  .badge.enabled .icon {
+    @apply stroke-blue-600/50 group-hover:stroke-blue-600/75;
+  }
+</style>

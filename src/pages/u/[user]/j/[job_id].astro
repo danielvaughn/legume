@@ -1,0 +1,80 @@
+---
+import UserHeader from "../../../../components/UserHeader.astro";
+import Layout from "../../../../layouts/Layout.astro";
+
+const { job_id } = Astro.params;
+const jobs = await Astro.glob("../../../../content/jobs/*.md");
+
+const job = jobs.find((j) => j.frontmatter.id === job_id);
+
+if (!job) {
+  return Astro.redirect("/four-oh-four");
+}
+
+const { Content } = job;
+---
+
+<Layout title={job.frontmatter.title}>
+  <UserHeader />
+  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+    <section class="mt-8">
+      <header
+        class="flex items-center justify-between border-black border-b-2 pb-1"
+      >
+        <h2 class="uppercase font-bold tracking-wide">
+          {job.frontmatter.title} | {job.frontmatter.company}
+        </h2>
+
+        <span class="flex justify-end items-center gap-x-3">
+          {job.frontmatter.dates}
+        </span>
+      </header>
+    </section>
+
+    <section class="mt-8 job-content">
+      <Content />
+    </section>
+
+    <footer class="mt-8 mb-12">
+      <h3
+        class="uppercase font-bold tracking-wide border-black border-b-2 pb-1"
+      >
+        All work
+      </h3>
+      <ul class="list-disc pl-6 mt-5">
+        {
+          jobs.map((j) => {
+            if (j.frontmatter.id === job.frontmatter.id) {
+              return (
+                <li class="text-neutral-500 select-none">
+                  {j.frontmatter.title} | {j.frontmatter.company}
+                </li>
+              );
+            }
+
+            return (
+              <li>
+                <a
+                  href={`/u/danielvaughn/j/${j.frontmatter.id}`}
+                  class="hover:text-blue-700 hover:underline cursor-pointer"
+                >
+                  {j.frontmatter.title} | {j.frontmatter.company}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </footer>
+  </main>
+</Layout>
+
+<style is:global>
+  .job-content p {
+    @apply mb-2 leading-snug text-lg text-pretty;
+  }
+
+  .job-content a {
+    @apply text-blue-700 hover:underline dark:text-blue-500;
+  }
+</style>

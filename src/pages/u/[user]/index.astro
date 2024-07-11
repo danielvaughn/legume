@@ -1,15 +1,18 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Toggle from "../../components/Toggle.astro";
+import Layout from "../../../layouts/Layout.astro";
+import Toggle from "../../../components/Toggle.astro";
+import UserHeader from "../../../components/UserHeader.astro";
 
 const experience = [
   {
-    title: "Senior DX Engineer",
+    job_title: "Senior DX Engineer",
+    job_href: "/u/danielvaughn/j/dx_eng_nem",
     company: "NextEra Mobility",
+    company_href: "https://www.nexteraenergyresources.com",
     dates: "Oct 2022 - Present",
-    achievements: [
+    highlights: [
       {
-        link: "",
+        link: "/u/danielvaughn/h/str_logger",
         description:
           "Built a structured logger to improve incident response and resolution",
         skills: ["Python"],
@@ -31,10 +34,12 @@ const experience = [
     ],
   },
   {
-    title: "Founding Engineer",
+    job_title: "Founding Engineer",
+    job_href: "/u/danielvaughn/j/fe_rt",
     company: "RealTrade",
+    company_href: "https://realtrade.io",
     dates: "June 2021 - Sep 2022",
-    achievements: [
+    highlights: [
       {
         description:
           "Built a performant real estate search experience with real-time chat features",
@@ -63,10 +68,12 @@ const experience = [
     ],
   },
   {
-    title: "Senior Fullstack Engineer",
+    job_title: "Senior Fullstack Engineer",
+    job_href: "/u/danielvaughn/j/sfe_hsi",
     company: "HUMAN Security Inc",
+    company_href: "https://www.humansecurity.com",
     dates: "Dec 2016 - May 2021",
-    achievements: [
+    highlights: [
       {
         description: "Led the dashboard team as EM",
         skills: ["management"],
@@ -93,10 +100,12 @@ const experience = [
     ],
   },
   {
-    title: "Fullstack Engineer",
+    job_title: "Fullstack Engineer",
+    job_href: "/u/danielvaughn/j/fe_ti",
     company: "TradeIt",
+    company_href: "https://trade.it",
     dates: "May 2015 - Nov 2016",
-    achievements: [
+    highlights: [
       {
         description: "Designed and built the TradeIt marketing website",
         skills: ["HTML", "CSS", "JavaScript"],
@@ -114,10 +123,12 @@ const experience = [
     ],
   },
   {
-    title: "Frontend Developer",
+    job_title: "Frontend Developer",
+    job_href: "/u/danielvaughn/j/fe_k",
     company: "Kapitall",
+    company_href: "https://www.linkedin.com/company/kapitall",
     dates: "Mar 2014 - Apr 2015",
-    achievements: [
+    highlights: [
       {
         description:
           "Developed and maintained drag-and-drop stock trading tools",
@@ -131,10 +142,12 @@ const experience = [
     ],
   },
   {
-    title: "Junior Frontend Developer",
+    job_title: "Junior Frontend Developer",
+    job_href: "/u/danielvaughn/j/jd_twdc",
     company: "The Walt Disney Company",
+    company_href: "https://www.disney.com",
     dates: "Jan 2013 - Feb 2014",
-    achievements: [
+    highlights: [
       {
         description: "Built internal tracking tools for content moderation",
         skills: ["HTML", "CSS", "JavaScript"],
@@ -145,45 +158,7 @@ const experience = [
 ---
 
 <Layout title="Welcome to Astro.">
-  <header class="text-center mt-8 max-w-3xl mx-auto px-5 md:px-0">
-    <h1 class="text-3xl font-bold tracking-wide">Daniel Vaughn</h1>
-    <nav>
-      <ul class="flex items-baseline justify-center flex-wrap">
-        <li>
-          <a
-            class="text-blue-700 underline whitespace-nowrap"
-            href="tel:+19015819998"
-          >
-            901-581-9998
-          </a>
-        </li>
-        <li>
-          <a
-            class="text-blue-700 underline whitespace-nowrap"
-            href="mailto:danielbvaughn@gmail.com"
-          >
-            danielbvaughn@gmail.com
-          </a>
-        </li>
-        <li>
-          <a
-            class="text-blue-700 underline whitespace-nowrap"
-            href="https://www.linkedin.com/in/vaughndaniel"
-          >
-            linkedin.com/in/vaughndaniel
-          </a>
-        </li>
-        <li>
-          <a
-            class="text-blue-700 underline whitespace-nowrap"
-            href="https://www.github.com/danielvaughn"
-          >
-            github.com/danielvaughn
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <UserHeader />
   <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0" data-hide-skills>
     <section class="mt-8">
       <header
@@ -192,7 +167,7 @@ const experience = [
         <h2 class="uppercase font-bold tracking-wide">Experience</h2>
 
         <span class="flex justify-end items-center gap-x-3">
-          <Toggle id="achievements" label="Achievements" initial={true} />
+          <Toggle id="highlights" label="Achievements" initial={true} />
           <Toggle id="skills" label="Skills" />
         </span>
       </header>
@@ -202,14 +177,35 @@ const experience = [
           <article class="mt-5">
             <header class="font-bold flex flex-wrap items-baseline justify-between">
               <span class="flex items-baseline">
-                <h3 class="whitespace-nowrap">{job.title}</h3>
+                <h3 class="whitespace-nowrap">
+                  {job.job_href !== "" && (
+                    <a
+                      href={job.job_href}
+                      class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                    >
+                      {job.job_title}
+                    </a>
+                  )}
+                  {job.job_href === "" && job.job_title}
+                </h3>
                 <span class="px-1 text-neutral-400">|</span>
-                <span class="whitespace-nowrap">{job.company}</span>
+                {job.company_href !== "" && (
+                  <a
+                    class="whitespace-nowrap cursor-pointer hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                    href={job.company_href}
+                    target="_blank"
+                  >
+                    {job.company}
+                  </a>
+                )}
+                {job.company_href === "" && (
+                  <span class="whitespace-nowrap">{job.company}</span>
+                )}
               </span>
               <span class="whitespace-nowrap">{job.dates}</span>
             </header>
-            <ul class="list-disc pl-6 mt-1 achievements">
-              {job.achievements.map((achievement) => {
+            <ul class="list-disc pl-6 mt-1 highlights">
+              {job.highlights.map((achievement) => {
                 const skillList = achievement.skills.join(", ");
 
                 if (achievement.link) {
@@ -252,33 +248,26 @@ const experience = [
         Education
       </h2>
 
-      <article class="mt-5 font-bold flex items-baseline justify-between">
+      <article
+        class="mt-5 font-bold flex flex-wrap items-baseline justify-between"
+      >
         <span class="flex items-baseline">
           <span class="whitespace-nowrap">Bachelor of Fine Arts</span>
           <span class="px-1 text-neutral-400">|</span>
           <h3 class="whitespace-nowrap">Memphis College of Art</h3>
         </span>
-        <span>Sept 2004 - Sept 2008</span>
+        <span class="whitespace-nowrap">Sept 2004 - Sept 2008</span>
       </article>
     </section>
   </main>
 </Layout>
 
 <style>
-  header nav ul li:after {
-    content: "•";
-    @apply px-1 text-neutral-300;
-  }
-
-  header nav ul li:last-of-type:after {
-    content: "";
-  }
-
   main[data-hide-skills] .skills {
     display: none;
   }
 
-  main[data-hide-achievements] .achievements {
+  main[data-hide-highlights] .highlights {
     display: none;
   }
 </style>
@@ -301,5 +290,5 @@ const experience = [
   }
 
   listenToToggle("skills");
-  listenToToggle("achievements");
+  listenToToggle("highlights");
 </script>

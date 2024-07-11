@@ -1,0 +1,82 @@
+---
+import UserHeader from "../../../../components/UserHeader.astro";
+import Layout from "../../../../layouts/Layout.astro";
+
+const { highlight_id } = Astro.params;
+const highlights = await Astro.glob("../../../../content/highlights/*.md");
+
+const highlight = highlights.find((j) => j.frontmatter.id === highlight_id);
+
+if (!highlight) {
+  return Astro.redirect("/four-oh-four");
+}
+
+const { Content } = highlight;
+---
+
+<Layout title={highlight.frontmatter.title}>
+  <UserHeader />
+  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+    <section class="mt-8">
+      <header class="">
+        <h2
+          class="font-bold uppercase tracking-wide border-black border-b-2 pb-1"
+        >
+          {highlight.frontmatter.title}
+        </h2>
+
+        <span>
+          {highlight.frontmatter.job_title} | {highlight.frontmatter.company}
+        </span>
+      </header>
+    </section>
+
+    <section class="mt-8 job-content">
+      <Content />
+    </section>
+
+    <footer class="mt-8 mb-12">
+      <h3
+        class="uppercase font-bold tracking-wide border-black border-b-2 pb-1"
+      >
+        All achievements at {highlight.frontmatter.job_title} | {
+          highlight.frontmatter.company
+        }
+      </h3>
+      <ul class="list-disc pl-6 mt-5">
+        {
+          highlights.map((j) => {
+            if (j.frontmatter.id === highlight.frontmatter.id) {
+              return (
+                <li class="text-neutral-500 select-none">
+                  {j.frontmatter.title} | {j.frontmatter.company}
+                </li>
+              );
+            }
+
+            return (
+              <li>
+                <a
+                  href={`/u/danielvaughn/j/${j.frontmatter.id}`}
+                  class="hover:text-blue-700 hover:underline cursor-pointer"
+                >
+                  {j.frontmatter.title} | {j.frontmatter.company}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </footer>
+  </main>
+</Layout>
+
+<style is:global>
+  .job-content p {
+    @apply mb-2 leading-snug text-lg text-pretty;
+  }
+
+  .job-content a {
+    @apply text-blue-700 hover:underline dark:text-blue-500;
+  }
+</style>
