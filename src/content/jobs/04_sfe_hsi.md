@@ -21,3 +21,23 @@ My role there was as primarily as a fullstack web engineer, working on that prod
 It remains one of my favorite work experiences,
 not only for the uniquness of the work itself,
 but also because of the close relationships I developed with my coworkers.
+
+tech:
+
+- built dashboard frontend and backend
+- initially was using Angular 1.6 and foundation
+- used nodejs and mongo on the backend
+- also talked to druid, worked with data engineers to get queries down to 1-3s for all customer queries. 6pb database!
+- used D3 for visualizations
+- migrated to react while I was there
+- I built a microframework for using react in place of D3
+- migrated from rest to graphql
+
+learned:
+
+- our job is not to write code, but to solve business problems
+- lines of code are spent, not written
+- engineering management is not a "step up" from senior, it's an entirely different profession
+- keeping the company culture as you grow is very hard, and may not even be possible
+- success is not binary; even winning can involve losing
+- migrating frameworks is incredibly expensive, choose your tech stack wisely!
