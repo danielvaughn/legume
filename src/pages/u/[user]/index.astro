@@ -10,6 +10,7 @@ const experience = [
     company: "NextEra Mobility",
     company_href: "https://www.nexteraenergyresources.com",
     dates: "Oct 2022 - Present",
+    skills: ["Python", "Bash", "CircleCI", "Helm", "Kubernetes", "TypeScript"],
     highlights: [
       {
         link: "/u/danielvaughn/h/str_logger",
@@ -42,6 +43,12 @@ const experience = [
     company: "RealTrade",
     company_href: "https://realtrade.io",
     dates: "June 2021 - Sep 2022",
+    skills: [
+      "TypeScript",
+      "React",
+      "Product Development",
+      "Business Development",
+    ],
     highlights: [
       {
         link: "",
@@ -81,28 +88,38 @@ const experience = [
     company: "HUMAN Security Inc",
     company_href: "https://www.humansecurity.com",
     dates: "Dec 2016 - May 2021",
+    skills: [
+      "JavaScript",
+      "Angular",
+      "React",
+      "D3",
+      "NodeJS",
+      "Druid",
+      "Mongo",
+      "Engineering Management",
+    ],
     highlights: [
       {
         link: "",
         description: "Led the dashboard team as EM",
-        skills: ["management"],
+        skills: ["Engineering Management"],
       },
       {
         link: "",
         description: "Built and maintained a dashboard for fraud analysis",
-        skills: ["JavaScript", "Angular", "React"],
+        skills: ["JavaScript", "Angular", "React", "Mongo"],
       },
       {
         link: "",
         description:
           "Worked with UX designers to implement scheduled and ad hoc customer reporting",
-        skills: ["cross-functional collaboration"],
+        skills: ["JavaScript", "React"],
       },
       {
         link: "",
         description:
           "Created a data visualization framework to improve rendering performance by 300%",
-        skills: ["JavaScript"],
+        skills: ["JavaScript", "D3"],
       },
       {
         link: "",
@@ -118,6 +135,7 @@ const experience = [
     company: "TradeIt",
     company_href: "https://trade.it",
     dates: "May 2015 - Nov 2016",
+    skills: ["HTML", "CSS", "JavaScript", "Objective-C", "Groovy", "SQL"],
     highlights: [
       {
         link: "",
@@ -133,6 +151,12 @@ const experience = [
       {
         link: "",
         description:
+          "Built an automated backend to facilitate broker-agnostic financial trading",
+        skills: ["Groovy", "SQL"],
+      },
+      {
+        link: "",
+        description:
           "Developed an iOS SDK to enable and embed stock trading on native apps",
         skills: ["Objective-C"],
       },
@@ -144,6 +168,7 @@ const experience = [
     company: "Kapitall",
     company_href: "https://www.linkedin.com/company/kapitall",
     dates: "Mar 2014 - Apr 2015",
+    skills: ["HTML", "CSS", "JavaScript", "Groovy", "SQL"],
     highlights: [
       {
         link: "",
@@ -165,6 +190,7 @@ const experience = [
     company: "The Walt Disney Company",
     company_href: "https://www.disney.com",
     dates: "Jan 2013 - Feb 2014",
+    skills: ["HTML", "CSS", "JavaScript"],
     highlights: [
       {
         link: "",
@@ -192,50 +218,68 @@ const experience = [
       </header>
 
       {
-        experience.map((job) => (
-          <article class="mt-5">
-            <header class="font-bold flex flex-wrap items-baseline justify-between">
-              <span class="flex items-baseline">
-                <h3 class="whitespace-nowrap">
-                  {job.job_href !== "" && (
+        experience.map((job) => {
+          const jobSkillList = job.skills.join(", ");
+
+          return (
+            <article class="mt-5">
+              <header class="font-bold flex flex-wrap items-baseline justify-between">
+                <span class="flex items-baseline">
+                  <h3 class="whitespace-nowrap">
+                    {job.job_href !== "" && (
+                      <a
+                        href={job.job_href}
+                        class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                      >
+                        {job.job_title}
+                      </a>
+                    )}
+                    {job.job_href === "" && job.job_title}
+                  </h3>
+                  <span class="px-1 text-neutral-400">|</span>
+                  {job.company_href !== "" && (
                     <a
-                      href={job.job_href}
-                      class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                      class="whitespace-nowrap cursor-pointer hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                      href={job.company_href}
+                      target="_blank"
                     >
-                      {job.job_title}
+                      {job.company}
                     </a>
                   )}
-                  {job.job_href === "" && job.job_title}
-                </h3>
-                <span class="px-1 text-neutral-400">|</span>
-                {job.company_href !== "" && (
-                  <a
-                    class="whitespace-nowrap cursor-pointer hover:text-blue-700 hover:underline dark:hover:text-blue-500"
-                    href={job.company_href}
-                    target="_blank"
-                  >
-                    {job.company}
-                  </a>
-                )}
-                {job.company_href === "" && (
-                  <span class="whitespace-nowrap">{job.company}</span>
-                )}
+                  {job.company_href === "" && (
+                    <span class="whitespace-nowrap">{job.company}</span>
+                  )}
+                </span>
+                <span class="whitespace-nowrap">{job.dates}</span>
+              </header>
+              <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
+                ({jobSkillList})
               </span>
-              <span class="whitespace-nowrap">{job.dates}</span>
-            </header>
-            <ul class="list-disc pl-6 mt-1 highlights">
-              {job.highlights.map((achievement) => {
-                const skillList = achievement.skills.join(", ");
+              <ul class="list-disc pl-6 mt-1 highlights">
+                {job.highlights.map((achievement) => {
+                  const skillList = achievement.skills.join(", ");
 
-                if (achievement.link) {
+                  if (achievement.link) {
+                    return (
+                      <li class="marker:text-blue-500">
+                        <a
+                          href={achievement.link}
+                          class="hover:text-blue-700 hover:underline"
+                        >
+                          {achievement.description}
+                        </a>
+                        {skillList !== "" && (
+                          <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
+                            ({skillList})
+                          </span>
+                        )}
+                      </li>
+                    );
+                  }
+
                   return (
-                    <li class="marker:text-blue-500">
-                      <a
-                        href={achievement.link}
-                        class="hover:text-blue-700 hover:underline"
-                      >
-                        {achievement.description}
-                      </a>
+                    <li>
+                      {achievement.description}
                       {skillList !== "" && (
                         <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
                           ({skillList})
@@ -243,22 +287,11 @@ const experience = [
                       )}
                     </li>
                   );
-                }
-
-                return (
-                  <li>
-                    {achievement.description}
-                    {skillList !== "" && (
-                      <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
-                        ({skillList})
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </article>
-        ))
+                })}
+              </ul>
+            </article>
+          );
+        })
       }
     </section>
 
