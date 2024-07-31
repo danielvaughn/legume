@@ -23,6 +23,8 @@ and also led QA when we released 2 mobile apps for Disney.
 By 2013 I had gained enough trust and confidence with my bosses that I convinced them to let me transition to a junior developer role.
 I had noticed a feature gap on the team and wanted to address it.
 
+## Mod Minutes
+
 The content moderation team had a significant focus on the time spent moderating each product.
 This time tracking was used for tax purposes as well as product initiatives - during some campaigns they were asked to spend more time moderating specific IPs.
 The problem was that the moderators tended to shift focus throughout the day,
