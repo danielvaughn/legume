@@ -17,6 +17,12 @@ but we needed more customization than it was offering.
 So I stripped it apart and rebuilt it into a smaller,
 more flexible version that provided exactly what we needed.
 
+```js
+function helloWorld() {
+  console.log("hello world");
+}
+```
+
 This module wrapped the default python logger and added a special set of kvars for appending k/v pairs to a json object.
 It also provided a means for configuring the logger with default k/v pairs,
 which we used to automatically append service-wide information.

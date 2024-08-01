@@ -1,6 +1,7 @@
 ---
 import UserHeader from "../../../../components/UserHeader.astro";
 import Layout from "../../../../layouts/Layout.astro";
+import Prose from "../../../../components/Prose.astro";
 
 const { highlight_id } = Astro.params;
 const highlights = await Astro.glob("../../../../content/highlights/*.md");
@@ -16,22 +17,26 @@ const { Content } = highlight;
 
 <Layout title={highlight.frontmatter.title}>
   <UserHeader />
-  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+  <main class="max-w-2xl mx-auto px-5 pb-12 md:px-0">
     <section class="mt-8">
-      <header class="">
+      <header>
         <h2
           class="font-bold uppercase tracking-wide border-black border-b-2 pb-1"
         >
-          {highlight.frontmatter.title}
+          Achievement
         </h2>
 
-        <span>
-          {highlight.frontmatter.job_title} | {highlight.frontmatter.company}
+        <h3 class="font-bold mt-4">{highlight.frontmatter.title}</h3>
+
+        <span class="block italic">
+          as {highlight.frontmatter.job_title} at {
+            highlight.frontmatter.company
+          }
         </span>
       </header>
     </section>
 
-    <section class="mt-8 job-content">
+    <section class="mt-6 md-content">
       <Content />
     </section>
 
@@ -81,15 +86,20 @@ const { Content } = highlight;
 </Layout>
 
 <style is:global>
-  .job-content p {
-    @apply mb-2 leading-snug text-lg text-pretty;
+  .md-content p {
+    @apply mb-2 leading-snug text-pretty;
   }
 
-  .job-content a {
+  .md-content a {
     @apply text-blue-700 hover:underline dark:text-blue-500;
   }
 
-  .job-content code {
-    @apply text-sm text-emerald-200 bg-emerald-900 px-1 py-px;
+  .md-content p > code {
+    @apply text-xs text-emerald-200 bg-emerald-900 px-1 py-px;
+  }
+
+  .md-content pre.astro-code {
+    @apply p-3 my-3 leading-normal;
+    font-size: 12px;
   }
 </style>

@@ -8,7 +8,7 @@ const jobs = await Astro.glob("../../../../content/jobs/*.md");
 const job = jobs.find((j) => j.frontmatter.id === job_id);
 
 if (!job) {
-  return Astro.redirect("/four-oh-four");
+  return Astro.redirect("/404");
 }
 
 const { Content } = job;
@@ -16,22 +16,26 @@ const { Content } = job;
 
 <Layout title={job.frontmatter.title}>
   <UserHeader />
-  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+  <main class="max-w-2xl mx-auto px-5 pb-12 md:px-0">
     <section class="mt-8">
-      <header
-        class="flex items-center justify-between border-black border-b-2 pb-1"
-      >
-        <h2 class="uppercase font-bold tracking-wide">
-          {job.frontmatter.title} | {job.frontmatter.company}
+      <header>
+        <h2
+          class="font-bold uppercase tracking-wide border-black border-b-2 pb-1"
+        >
+          Experience
         </h2>
 
-        <span class="flex justify-end items-center gap-x-3">
+        <h3 class="font-bold mt-4">
+          {job.frontmatter.title} | {job.frontmatter.company}
+        </h3>
+
+        <span class="block italic">
           {job.frontmatter.dates}
         </span>
       </header>
     </section>
 
-    <section class="mt-8 job-content">
+    <section class="mt-6 md-content">
       <Content />
     </section>
 
@@ -70,15 +74,15 @@ const { Content } = job;
 </Layout>
 
 <style is:global>
-  .job-content h2 {
+  .md-content h2 {
     @apply uppercase font-bold mt-5 tracking-wider;
   }
 
-  .job-content p {
+  .md-content p {
     @apply mb-2 leading-snug text-lg text-pretty;
   }
 
-  .job-content a {
+  .md-content a {
     @apply text-blue-700 hover:underline dark:text-blue-500;
   }
 </style>

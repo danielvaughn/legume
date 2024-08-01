@@ -204,7 +204,7 @@ const experience = [
 
 <Layout title="Welcome to Astro.">
   <UserHeader />
-  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0" data-hide-skills>
+  <main class="max-w-2xl mx-auto px-5 pb-12 md:px-0" data-hide-skills>
     <section class="mt-8">
       <header
         class="flex items-center justify-between border-black border-b-2 pb-1"
@@ -222,8 +222,8 @@ const experience = [
           const jobSkillList = job.skills.join(", ");
 
           return (
-            <article class="mt-5">
-              <header class="font-bold flex flex-wrap items-baseline justify-between">
+            <article class="mt-4">
+              <header class="font-bold sm:flex flex-wrap items-baseline justify-between">
                 <span class="flex items-baseline">
                   <h3 class="whitespace-nowrap">
                     {job.job_href !== "" && (
@@ -255,13 +255,13 @@ const experience = [
               <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
                 ({jobSkillList})
               </span>
-              <ul class="list-disc pl-6 mt-1 highlights">
+              <ul class="list-disc pl-6 mt-1 highlights leading-tight">
                 {job.highlights.map((achievement) => {
                   const skillList = achievement.skills.join(", ");
 
                   if (achievement.link) {
                     return (
-                      <li class="marker:text-blue-500">
+                      <li class="marker:text-blue-600 my-1">
                         <a
                           href={achievement.link}
                           class="hover:text-blue-700 hover:underline"
@@ -278,7 +278,7 @@ const experience = [
                   }
 
                   return (
-                    <li>
+                    <li class="my-1">
                       {achievement.description}
                       {skillList !== "" && (
                         <span class="skills flex items-baseline text-sm text-neutral-600 italic mb-1">
