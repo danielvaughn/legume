@@ -1,13 +1,16 @@
 ---
 import SkillDetails from "../../../components/SkillDetails.astro";
 import UserHeader from "../../../components/UserHeader.astro";
-import resume from "../../../data/danielvaughn.yaml";
 import Layout from "../../../layouts/Layout.astro";
 import { formatDateRange } from "../../../utils/format";
-
-const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
+import { getFileContents } from "../../../utils/storage";
+import { parse } from "yaml";
 
 const { user } = Astro.params;
+
+const file = await getFileContents("danielvaughn/danielvaughn.yaml");
+const resume = parse(file.toString("utf-8"));
+const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 ---
 
 <Layout title="Welcome to Astro.">

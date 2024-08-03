@@ -6,4 +6,4 @@ I worked on both the frontend and backend.
 The frontend was built with a completely custom framework powered by jQuery, as was common in that era.
 The backend was Groovy (a variant of Java) and SQL, and hosted on DigitalOcean.
 
-![the kapitall interface](../../assets/kapitall_two.jpg)
+![the kapitall interface](../../images/kapitall_two.jpg)
