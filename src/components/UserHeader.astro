@@ -1,10 +1,18 @@
+---
+interface Props {
+  bio: Bio;
+}
+
+const { bio } = Astro.props;
+---
+
 <header class="text-center mt-8 max-w-3xl mx-auto px-5 md:px-0">
   <h1 class="text-3xl font-bold tracking-wide">
     <a
-      href="/u/danielvaughn"
+      href="/resume/danielvaughn"
       class="hover:text-blue-700 hover:underline dark:hover:text-blue-500 dark:text-neutral-100"
     >
-      Daniel Vaughn
+      {bio.name}
     </a>
   </h1>
   <nav>
@@ -14,7 +22,7 @@
           class="text-blue-700 dark:text-blue-500 hover:underline whitespace-nowrap"
           href="tel:+19015819998"
         >
-          901-581-9998
+          {bio.phone}
         </a>
       </li>
       <li>
@@ -22,23 +30,23 @@
           class="text-blue-700 dark:text-blue-500 hover:underline whitespace-nowrap"
           href="mailto:danielbvaughn@gmail.com"
         >
-          danielbvaughn@gmail.com
+          {bio.email}
         </a>
       </li>
       <li>
         <a
           class="text-blue-700 dark:text-blue-500 hover:underline whitespace-nowrap"
-          href="https://www.linkedin.com/in/vaughndaniel"
+          href={bio.linkedin}
         >
-          linkedin.com/in/vaughndaniel
+          {bio.linkedin.replace("https://www.", "")}
         </a>
       </li>
       <li>
         <a
           class="text-blue-700 dark:text-blue-500 hover:underline whitespace-nowrap"
-          href="https://www.github.com/danielvaughn"
+          href={bio.github}
         >
-          github.com/danielvaughn
+          {bio.github.replace("https://", "")}
         </a>
       </li>
     </ul>

@@ -1,0 +1,30 @@
+---
+import { formatDateRange } from "../utils/format";
+
+interface Props {
+  job: Job;
+}
+
+const { job } = Astro.props;
+
+const dates = formatDateRange(
+  job.start_month,
+  job.start_year,
+  job.end_month || null,
+  job.end_year || null
+);
+---
+
+<header>
+  <h2 class="font-bold uppercase tracking-wide border-black border-b-2 pb-1">
+    Experience
+  </h2>
+
+  <h3 class="font-bold mt-2">
+    {job.role} | {job.company_name}
+  </h3>
+
+  <span class="block italic">
+    {dates}
+  </span>
+</header>

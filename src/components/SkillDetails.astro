@@ -1,0 +1,34 @@
+---
+interface Props {
+  bio: Bio;
+}
+
+const { bio } = Astro.props;
+---
+
+<section class="mt-6">
+  <header class="border-black border-b-2 pb-1">
+    <h2 class="uppercase font-bold tracking-wide">Skills</h2>
+  </header>
+
+  <dl class="mt-2">
+    {
+      Object.entries(bio.skills).map(([key, value]) => {
+        return (
+          <>
+            <dt class="capitalize font-bold">{key}:</dt>
+            <dd>{value.join(", ")}</dd>
+          </>
+        );
+      })
+    }
+  </dl>
+</section>
+
+<style>
+  dl {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 8px;
+  }
+</style>

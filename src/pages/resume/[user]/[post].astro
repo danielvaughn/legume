@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import UserHeader from "../../../components/UserHeader.astro";
+import JobHeader from "../../../components/JobHeader.astro";
+import resume from "../../../data/danielvaughn.yaml";
+import Layout from "../../../layouts/Layout.astro";
+import { getResumePartialByPost } from "../../../utils/posts";
+import HighlightHeader from "../../../components/HighlightHeader.astro";
+
+const { post } = Astro.params;
+const resumePartial = getResumePartialByPost(resume, post as string);
+
+const posts = await getCollection("posts");
+
+const selectedPost = posts.find((p) => {
+  return p.slug === post;
+});
+
+if (!selectedPost) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await selectedPost.render();
+---
+
+<Layout title={`Legume - ${resumePartial.type}`}>
+  <UserHeader bio={resume.bio} />
+  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+    <section class="mt-6">
+      {resumePartial.type === "job" && <JobHeader job={resumePartial.data} />}
+
+      {
+        resumePartial.type === "highlight" && (
+          <HighlightHeader
+            job={resumePartial.data.job}
+            highlight={resumePartial.data.highlight}
+          />
+        )
+      }
+
+      <article class="mt-6 md-content">
+        <Content />
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  .md-content p {
+    @apply mb-2 leading-snug text-pretty;
+  }
+
+  .md-content a {
+    @apply text-blue-700 hover:underline dark:text-blue-500;
+  }
+
+  .md-content p > code {
+    @apply text-xs text-emerald-200 bg-emerald-900 px-1 py-px;
+  }
+
+  .md-content pre.astro-code {
+    @apply p-3 my-3 leading-normal;
+    font-size: 12px;
+  }
+
+  .md-content h2 {
+    @apply capitalize font-bold mt-5 tracking-wider;
+  }
+
+  .md-content p {
+    @apply mb-2 leading-snug text-lg text-pretty;
+  }
+
+  .md-content a {
+    @apply text-blue-700 hover:underline dark:text-blue-500;
+  }
+</style>

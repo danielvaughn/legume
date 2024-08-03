@@ -1,0 +1,243 @@
+
+bio:
+  name: Daniel Vaughn
+  email: danielbvaughn@gmail.com
+  phone: (901) 581-9998
+  city: Boynton Beach
+  state: FL
+  country: USA
+  linkedin: https://www.linkedin.com/in/vaughndaniel
+  github: https://github.com/danielvaughn
+  website: https://danielvaughn.dev
+  post: bio
+  skills:
+    languages:
+      - HTML
+      - CSS
+      - TypeScript
+      - Python
+      - Go
+      - SQL
+    frameworks:
+      - React
+      - Astro
+      - Svelte
+      - Flask
+      - Express
+    platforms:
+      - GCP
+      - AWS
+      - DigitalOcean
+      - Cloudflare
+
+jobs:
+  - company_name: NextEra Mobility
+    company_url: https://www.nexteraenergyresources.com
+    role: Senior Developer
+    start_month: 10
+    start_year: 2022
+    end_month:
+    end_year:
+    post: next-era-summary
+    highlights:
+      - title: Introduced audits and other mechanisms to improve platform security
+        post: next-era-audits
+        skills:
+          - Python
+          - Bash
+      - title: Reduced deployment latency from 45 min to 10 min
+        post: next-era-dep-latency
+        skills:
+          - CircleCI
+          - Helm
+          - Kubernetes
+      - title: Implemented synthetic monitoring across all products to help satisfy our 99.5% uptime SLA
+        post: next-era-synth-monitoring
+        skills:
+          - TypeScript
+      - title: Built a structured logger to improve incident response and resolution
+        post: next-era-logger
+        skills:
+          - Python
+
+  - company_name: RealTrade
+    company_url: https://realtrade.io
+    role: Founding Engineer
+    start_month: 6
+    start_year: 2021
+    end_month: 9
+    end_year: 2022
+    post: realtrade-summary
+    highlights:
+      - title: Built a performant real estate search experience with real-time chat features
+        post: realtrade-search
+        skills:
+          - TypeScript
+          - React
+      - title: Built a replication pipeline for real estate listing data
+        post: realtrade-replication
+        skills:
+          - Python
+      - title: Designed and implemented dynamically rendered marketing images for real estate agents
+        post: realtrade-marketing
+        skills:
+          - TypeScript
+      - title: Listened to customer feedback and iterated on product features, achieving 20% MoM user growth
+        post: realtrade-iteration
+        skills:
+          - Product Development
+      - title: Worked with a board of advisors to develop the business model for the company
+        post: realtrade-business-model
+        skills:
+          - Business Development
+
+  - company_name: HUMAN Security Inc
+    role: Senior Fullstack Engineer
+    start_month: 12
+    start_year: 2016
+    end_month: 5
+    end_year: 2021
+    post: human-summary
+    highlights:
+      - title: Led the dashboard team as EM
+        post: human-em
+        skills:
+          - Engineering Management
+      - title: Built and maintained a dashboard for fraud analysis
+        post: human-dashboard
+        skills:
+          - JavaScript
+          - Angular
+          - React
+          - Mongo
+      - title: Worked with UX designers to implement scheduled and ad hoc customer reporting
+        post: human-reporting
+        skills:
+          - JavaScript
+          - React
+      - title: Created a data visualization framework to improve rendering performance by 300%
+        post: human-data-viz
+        skills:
+          - JavaScript
+          - D3
+      - title: Collaborated with data engineers to achieve a p90 response time of 3s for all customer queries
+        post: human-data-queries
+        skills:
+          - NodeJS
+          - Druid
+          - Snowflake
+
+  - company_name: TradeIt
+    role: Fullstack Engineer
+    start_month: 5
+    start_year: 2015
+    end_month: 11
+    end_year: 2016
+    post: tradeit-summary
+    highlights:
+      - title: Designed and built the TradeIt marketing website
+        post: tradeit-marketing-site
+        skills:
+          - HTML
+          - CSS
+          - JavaScript
+      - title: Built a JavaScript SDK to embed and enable stock trading on any website
+        post: tradeit-web-sdk
+        skills:
+          - JavaScript
+      - title: Built an automated backend to facilitate broker-agnostic financial trading
+        post: tradeit-backend
+        skills:
+          - Groovy
+          - SQL
+          - Charles Proxy
+      - title: Developed an iOS SDK to enable and embed stock trading on native apps
+        post: tradeit-ios-sdk
+        skills:
+          - Objective C
+
+  - company_name: Kapitall
+    role: Frontend Developer
+    start_month: 3
+    start_year: 2014
+    end_month: 4
+    end_year: 2015
+    post: kapitall-summary
+    highlights:
+      - title: Built real-time stock trading features for the Kapitall backend
+        post: kapitall-backend
+        skills:
+          - Groovy
+          - SQL
+      - title: Developed and maintained drag-and-drop stock trading tools
+        post: kapitall-drag-drop
+        skills:
+          - HTML
+          - CSS
+          - JavaScript
+
+  - company_name: The Walt Disney Company
+    role: Junior Frontend Developer
+    start_month: 1
+    start_year: 2013
+    end_month: 2
+    end_year: 2014
+    post: disney-summary
+    highlights:
+      - title: Built internal tracking tools for content moderation
+        post: disney-internal-tools
+        skills:
+          - HTML
+          - CSS
+          - JavaScript
+
+  - company_name: Early Freelance
+    role: Developer
+    start_month: 1
+    start_year: 2011
+    end_month: 1
+    end_year: 2013
+    post: early-freelance-summary
+    highlights:
+      - title: Built a wordpress site for a photographer
+        post: early-freelance-photography
+        skills:
+          - HTML
+          - CSS
+          - JavaScript
+          - PHP
+          - Wordpress
+      - title: Built a wordpress site for a church
+        post: early-freelance-church
+        skills:
+          - HTML
+          - CSS
+          - JavaScript
+          - PHP
+          - Wordpress
+
+# volunteer:
+#   - org_name: Something
+#     org_url: http://www.something.com
+#     role: Volunteer
+#     start_month: 1
+#     start_year: 2013
+#     end_month: 2
+#     end_year: 2014
+#     title: I did something idk
+
+education:
+  - institution: Memphis College of Art
+    institution_url: https://en.wikipedia.org/wiki/Memphis_College_of_Art
+    degree: Bachelor of Fine Arts
+    major: Painting
+    start_month: 9
+    start_year: 2004
+    end_month: 5
+    end_year: 2008
+
+projects:
+  - project_name: Matry
+    project_url: https://github.com/matry
+    title: A suite of tools to help designers and developers collaborate
+    post: /projects/matry
