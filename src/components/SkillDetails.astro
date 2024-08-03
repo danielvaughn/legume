@@ -8,7 +8,7 @@ const { bio } = Astro.props;
 
 <section class="mt-6">
   <header class="border-black border-b-2 pb-1">
-    <h2 class="uppercase font-bold tracking-wide">Skills</h2>
+    <h2 class="uppercase font-bold tracking-wide select-none">Skills</h2>
   </header>
 
   <dl class="mt-2">
@@ -16,7 +16,7 @@ const { bio } = Astro.props;
       Object.entries(bio.skills).map(([key, value]) => {
         return (
           <>
-            <dt class="capitalize font-bold">{key}:</dt>
+            <dt class="capitalize font-bold select-none">{key}:</dt>
             <dd>{value.join(", ")}</dd>
           </>
         );

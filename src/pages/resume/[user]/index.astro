@@ -17,7 +17,9 @@ const { user } = Astro.params;
 
     <section class="mt-6">
       <header class="border-black border-b-2 pb-1">
-        <h2 class="uppercase font-bold tracking-wide">Experience</h2>
+        <h2 class="uppercase font-bold tracking-wide select-none">
+          Experience
+        </h2>
       </header>
 
       {
@@ -54,11 +56,13 @@ const { user } = Astro.params;
                       {job.company_name}
                     </a>
                   )}
-                  {job.company_href === "" && (
-                    <span class="whitespace-nowrap">{job.company_name}</span>
+                  {!Boolean(job.company_url) && (
+                    <span class="whitespace-nowrap select-none">
+                      {job.company_name}
+                    </span>
                   )}
                 </span>
-                <span class="whitespace-nowrap block">{dates}</span>
+                <span class="whitespace-nowrap block select-none">{dates}</span>
               </header>
 
               <ul class="list-disc pl-6 mt-1 highlights leading-tight">
@@ -102,7 +106,9 @@ const { user } = Astro.params;
     </section>
 
     <section class="mt-6">
-      <h2 class="uppercase font-bold border-black border-b-2 tracking-wide">
+      <h2
+        class="uppercase font-bold border-black border-b-2 tracking-wide select-none"
+      >
         Education
       </h2>
 
