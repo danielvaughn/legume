@@ -70,28 +70,29 @@ jobs:
     post: realtrade-summary
     highlights:
       - title: Built a performant real estate search experience with real-time chat features
-        post: realtrade-search
+        # post: realtrade-search
         skills:
           - TypeScript
           - React
       - title: Built a replication pipeline for real estate listing data
-        post: realtrade-replication
+        # post: realtrade-replication
         skills:
           - Python
       - title: Designed and implemented dynamically rendered marketing images for real estate agents
-        post: realtrade-marketing
+        # post: realtrade-marketing
         skills:
           - TypeScript
       - title: Listened to customer feedback and iterated on product features, achieving 20% MoM user growth
-        post: realtrade-iteration
+        # post: realtrade-iteration
         skills:
           - Product Development
       - title: Worked with a board of advisors to develop the business model for the company
-        post: realtrade-business-model
+        # post: realtrade-business-model
         skills:
           - Business Development
 
   - company_name: HUMAN Security Inc
+    company_url: https://www.humansecurity.com
     role: Senior Fullstack Engineer
     start_month: 12
     start_year: 2016
@@ -100,34 +101,35 @@ jobs:
     post: human-summary
     highlights:
       - title: Led the dashboard team as EM
-        post: human-em
+        # post: human-em
         skills:
           - Engineering Management
       - title: Built and maintained a dashboard for fraud analysis
-        post: human-dashboard
+        # post: human-dashboard
         skills:
           - JavaScript
           - Angular
           - React
           - Mongo
       - title: Worked with UX designers to implement scheduled and ad hoc customer reporting
-        post: human-reporting
+        # post: human-reporting
         skills:
           - JavaScript
           - React
       - title: Created a data visualization framework to improve rendering performance by 300%
-        post: human-data-viz
+        # post: human-data-viz
         skills:
           - JavaScript
           - D3
       - title: Collaborated with data engineers to achieve a p90 response time of 3s for all customer queries
-        post: human-data-queries
+        # post: human-data-queries
         skills:
           - NodeJS
           - Druid
           - Snowflake
 
   - company_name: TradeIt
+    company_url: https://trade.it
     role: Fullstack Engineer
     start_month: 5
     start_year: 2015
@@ -136,27 +138,28 @@ jobs:
     post: tradeit-summary
     highlights:
       - title: Designed and built the TradeIt marketing website
-        post: tradeit-marketing-site
+        # post: tradeit-marketing-site
         skills:
           - HTML
           - CSS
           - JavaScript
       - title: Built a JavaScript SDK to embed and enable stock trading on any website
-        post: tradeit-web-sdk
+        # post: tradeit-web-sdk
         skills:
           - JavaScript
       - title: Built an automated backend to facilitate broker-agnostic financial trading
-        post: tradeit-backend
+        # post: tradeit-backend
         skills:
           - Groovy
           - SQL
           - Charles Proxy
       - title: Developed an iOS SDK to enable and embed stock trading on native apps
-        post: tradeit-ios-sdk
+        # post: tradeit-ios-sdk
         skills:
           - Objective C
 
   - company_name: Kapitall
+    company_url: https://www.crunchbase.com/organization/kapitall
     role: Frontend Developer
     start_month: 3
     start_year: 2014
@@ -165,12 +168,10 @@ jobs:
     post: kapitall-summary
     highlights:
       - title: Built real-time stock trading features for the Kapitall backend
-        post: kapitall-backend
         skills:
           - Groovy
           - SQL
       - title: Developed and maintained drag-and-drop stock trading tools
-        post: kapitall-drag-drop
         skills:
           - HTML
           - CSS
@@ -190,6 +191,8 @@ jobs:
           - HTML
           - CSS
           - JavaScript
+          - Chrome Extension Development
+          - UI Design
 
   - company_name: Early Freelance
     role: Developer
@@ -200,7 +203,7 @@ jobs:
     post: early-freelance-summary
     highlights:
       - title: Built a wordpress site for a photographer
-        post: early-freelance-photography
+        # post: early-freelance-photography
         skills:
           - HTML
           - CSS
@@ -208,7 +211,7 @@ jobs:
           - PHP
           - Wordpress
       - title: Built a wordpress site for a church
-        post: early-freelance-church
+        # post: early-freelance-church
         skills:
           - HTML
           - CSS
