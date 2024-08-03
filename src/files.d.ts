@@ -12,7 +12,7 @@ interface Bio {
   post: string | null
   skills: {
     [key:string]: string[]
-  }
+  } | null
 }
 
 interface Project {

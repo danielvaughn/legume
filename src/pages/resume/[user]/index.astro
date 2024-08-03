@@ -5,7 +5,7 @@ import resume from "../../../data/danielvaughn.yaml";
 import Layout from "../../../layouts/Layout.astro";
 import { formatDateRange } from "../../../utils/format";
 
-const hasSkills = Boolean(Object.keys(resume.bio.skills).length);
+const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 
 const { user } = Astro.params;
 ---
@@ -47,7 +47,7 @@ const { user } = Astro.params;
                     {!job.post && job.role}
                   </h3>
                   <span class="px-1 text-neutral-400 hidden sm:block">|</span>
-                  {job.company_href !== "" && (
+                  {Boolean(job.company_url) && (
                     <a
                       class="whitespace-nowrap cursor-pointer hover:text-blue-700 hover:underline dark:hover:text-blue-500"
                       href={job.company_url}
