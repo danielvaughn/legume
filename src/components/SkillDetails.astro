@@ -4,6 +4,10 @@ interface Props {
 }
 
 const { bio } = Astro.props;
+
+if (!bio.skills) {
+  return Astro.redirect("/404");
+}
 ---
 
 <section class="mt-6">
