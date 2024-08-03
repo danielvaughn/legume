@@ -1,12 +1,7 @@
-While I was learning how to become a developer, I took on a couple of freelance projects.
+While I was learning how to code, I took on a couple of freelance projects.
+They were built on Wordpress, from scratch using a custom theme.
+I was the sole designer and developer for both sites.
 
-One was for a photographer in Pennsylvania, the website is called [Studio Luminoso](https://studioluminoso.photography/).
-The current website is not the one I created in 2012.
+1. A portfolio website for a photography studio in Philadelphia, called [Studio Luminoso](https://studioluminoso.photography/). The current website is not the one I created in 2012.
 
-The other freelance project was for a church called [The Assemblies of Yahweh](https://assembliesofyahweh.com/).
-As of 2024, they are still using the same site I built in 2012.
-
-Both sites were built on Wordpress, from scratch using a custom theme.
-
-The church website required some custom javascript as they used the site for live broadcasts of their services.
-I worked with a backend engineer to stream live video from an endpoint for their remote members.
+2. A website for a church called [The Assemblies of Yahweh](https://assembliesofyahweh.com/). As of 2024, they are still using the same site I built in 2012. This site required some custom javascript as it was used for live broadcasts of their services. I worked with a backend engineer to stream live video from an endpoint for their remote members.
