@@ -7,15 +7,28 @@ export async function createBucket(bucketName: string) {
 }
 
 export async function getFileContents(file: string): Promise<string> {
-  console.log(`getting files from ${import.meta.env._CONTENT_BUCKET} GCS bucket, without underscore: ${import.meta.env.CONTENT_BUCKET}`)
-  const remoteFile = await storage.bucket(import.meta.env._CONTENT_BUCKET).file(file).download()
+  let bucket: string | null = null
+
+  if (import.meta.env.PROD) {
+    bucket = 'legume-prod'
+  } else {
+    bucket = 'legume-nonprod'
+  }
+
+  const remoteFile = await storage.bucket(bucket).file(file).download()
   return remoteFile.toString()
 }
 
 export async function uploadFile(filePath: string, file: File) {
-  const bucket = storage.bucket(import.meta.env._CONTENT_BUCKET)
+  let bucket: string | null = null
 
-  const blob = bucket.file(filePath)
+  if (import.meta.env.PROD) {
+    bucket = 'legume-prod'
+  } else {
+    bucket = 'legume-nonprod'
+  }
+
+  const blob = await storage.bucket(bucket).file(filePath)
   const blobStream = blob.createWriteStream()
   const fileBuffer = await file.arrayBuffer()
 

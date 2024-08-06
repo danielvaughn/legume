@@ -36,7 +36,6 @@ images:
     $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
 options:
   substitutionOption: ALLOW_LOOSE
-  automapSubstitutions: true
   logging: CLOUD_LOGGING_ONLY
 substitutions:
   _PLATFORM: managed
@@ -44,7 +43,6 @@ substitutions:
   _SERVICE_NAME: legume
   _DEPLOY_REGION: us-central1
   _AR_HOSTNAME: us-central1-docker.pkg.dev
-  _CONTENT_BUCKET: legume-prod
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed
