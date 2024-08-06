@@ -3,13 +3,17 @@ import SkillDetails from "../../../components/SkillDetails.astro";
 import UserHeader from "../../../components/UserHeader.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { formatDateRange } from "../../../utils/format";
-import { getFileContents } from "../../../utils/storage";
-import { parse } from "yaml";
+import { getResume } from "../../../utils/resume";
 
 const { user } = Astro.params;
+let resume: Resume;
 
-const file = await getFileContents("danielvaughn/danielvaughn.yaml");
-const resume = parse(file.toString("utf-8"));
+try {
+  resume = await getResume(`${user}/resume.yaml`);
+} catch (error) {
+  return Astro.redirect("/404");
+}
+
 const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 ---
 
@@ -41,7 +45,7 @@ const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
                   <h3 class="whitespace-nowrap">
                     {!!job.post && (
                       <a
-                        href={`${user}/${job.post}`}
+                        href={`${user}/post/${job.post}`}
                         class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
                       >
                         {job.role}
@@ -76,7 +80,7 @@ const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
                     return (
                       <li class="marker:text-blue-600 my-1">
                         <a
-                          href={`${user}/${highlight.post}`}
+                          href={`${user}/post/${highlight.post}`}
                           class="hover:text-blue-700 hover:underline"
                         >
                           {highlight.title}

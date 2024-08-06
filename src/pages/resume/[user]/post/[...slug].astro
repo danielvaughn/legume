@@ -1,29 +1,43 @@
 ---
-import { getCollection } from "astro:content";
-import UserHeader from "../../../components/UserHeader.astro";
-import JobHeader from "../../../components/JobHeader.astro";
-import resume from "../../../data/danielvaughn.yaml";
-import Layout from "../../../layouts/Layout.astro";
-import { getResumePartialByPost } from "../../../utils/posts";
-import HighlightHeader from "../../../components/HighlightHeader.astro";
+import UserHeader from "../../../../components/UserHeader.astro";
+import JobHeader from "../../../../components/JobHeader.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import { getResumePartialByPost } from "../../../../utils/posts";
+import HighlightHeader from "../../../../components/HighlightHeader.astro";
+import { getResume } from "../../../../utils/resume";
+import { getFileContents } from "../../../../utils/storage";
+import { marked } from "marked";
 
-const { post } = Astro.params;
-const resumePartial = getResumePartialByPost(resume, post as string);
+const { user, slug } = Astro.params;
 
-const posts = await getCollection("posts");
-
-const selectedPost = posts.find((p) => {
-  return p.slug === post;
-});
-
-if (!selectedPost) {
+let post: string | null = null;
+try {
+  post = await getFileContents(`${user}/posts/${slug}.md`);
+} catch (error) {
   return Astro.redirect("/404");
 }
 
-const { Content } = await selectedPost.render();
+if (!post) {
+  return Astro.redirect("/404");
+}
+
+const content = marked.parse(post);
+
+let resume: Resume | null = null;
+try {
+  resume = await getResume(`${user}/resume.yaml`);
+} catch (error) {
+  return Astro.redirect("/404");
+}
+
+if (!resume) {
+  return Astro.redirect("/404");
+}
+
+const resumePartial = getResumePartialByPost(resume, slug as string);
 ---
 
-<Layout title={`Legume - ${resumePartial.type}`}>
+<Layout title={`Legume`}>
   <UserHeader bio={resume.bio} />
   <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
     <section class="mt-6">
@@ -38,9 +52,7 @@ const { Content } = await selectedPost.render();
         )
       }
 
-      <article class="mt-6 md-content">
-        <Content />
-      </article>
+      <article class="mt-6 md-content" set:html={content} />
     </section>
   </main>
 </Layout>
