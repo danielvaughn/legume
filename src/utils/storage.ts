@@ -7,7 +7,7 @@ export async function createBucket(bucketName: string) {
 }
 
 export async function getFileContents(file: string): Promise<string> {
-  console.log(`getting files from ${import.meta.env._CONTENT_BUCKET} GCS bucket`)
+  console.log(`getting files from ${import.meta.env._CONTENT_BUCKET} GCS bucket, without underscore: ${import.meta.env.CONTENT_BUCKET}`)
   const remoteFile = await storage.bucket(import.meta.env._CONTENT_BUCKET).file(file).download()
   return remoteFile.toString()
 }
