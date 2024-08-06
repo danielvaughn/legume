@@ -1,9 +1,24 @@
 import path from 'node:path'
 import type { APIRoute } from 'astro'
 import { uploadFile } from '../../utils/storage'
+import { getUser } from '../../utils/auth'
 
 export const POST: APIRoute = async ({ request }) => {
-  const userId = 'danielvaughn'
+  const auth = request.headers.get('Authorization')
+
+  if (!auth) {
+    return new Response(JSON.stringify({}), {
+      status: 400,
+    })
+  }
+
+  const userId = getUser(auth.replace('Bearer ', ''))
+
+  if (userId === null) {
+    return new Response(JSON.stringify({}), {
+      status: 401,
+    })
+  }
 
   try {
     const formData = await request.formData()
