@@ -1,12 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getSiteConfig } from "../utils/site";
+
+const site = await getSiteConfig();
 ---
 
 <Layout>
   <header class="p-5">
     <h1 class="font-bold tracking-wide text-lg mb-2">Legumé</h1>
     <p class="flex items-end tracking-wide">An experimental resume engine.</p>
-    <a href="/resume/danielvaughn" class="text-blue-700 underline">
+    <a href={`/resume/${site.publisher_slug}`} class="text-blue-700 underline">
       See an example
     </a>
   </header>

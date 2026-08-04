@@ -7,8 +7,10 @@ import HighlightHeader from "../../../../components/HighlightHeader.astro";
 import { getResume } from "../../../../utils/resume";
 import { getFileContents } from "../../../../utils/content";
 import { marked } from "marked";
+import { getSiteConfig } from "../../../../utils/site";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const site = await getSiteConfig();
   const posts = import.meta.glob("../../../../../content/posts/**/*.md");
 
   const slugs = Object.keys(posts).map((file) =>
@@ -16,7 +18,7 @@ export function getStaticPaths() {
   );
 
   return slugs.map((slug) => ({
-    params: { user: "danielvaughn", slug },
+    params: { user: site.publisher_slug, slug },
   }));
 }
 

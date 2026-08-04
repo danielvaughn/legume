@@ -4,9 +4,11 @@ import UserHeader from "../../../components/UserHeader.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { formatDateRange } from "../../../utils/format";
 import { getResume } from "../../../utils/resume";
+import { getSiteConfig } from "../../../utils/site";
 
-export function getStaticPaths() {
-  return [{ params: { user: "danielvaughn" } }];
+export async function getStaticPaths() {
+  const site = await getSiteConfig();
+  return [{ params: { user: site.publisher_slug } }];
 }
 
 const { user } = Astro.params;
@@ -125,6 +127,13 @@ const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 
       {
         resume.education.map((edu: any) => {
+          const dates = formatDateRange(
+            edu.start_month,
+            edu.start_year,
+            edu.end_month || null,
+            edu.end_year || null
+          );
+
           return (
             <article class="mt-5 font-bold flex flex-wrap items-baseline justify-between">
               <span class="flex items-baseline">
@@ -132,7 +141,7 @@ const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
                 <span class="px-1 text-neutral-400">|</span>
                 <h3 class="whitespace-nowrap">{edu.institution}</h3>
               </span>
-              <span class="whitespace-nowrap">Sept 2004 - Sept 2008</span>
+              <span class="whitespace-nowrap">{dates}</span>
             </article>
           );
         })

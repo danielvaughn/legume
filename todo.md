@@ -31,7 +31,7 @@ everything required to view it.
 - [x] Move the résumé data, Markdown posts, and images into that directory.
 - [x] Add site-level configuration for title, description, canonical URL,
       language, and other metadata.
-- [ ] Remove hardcoded references to `danielvaughn` and personal contact data
+- [x] Remove hardcoded references to `danielvaughn` and personal contact data
       from components and routes.
 - [ ] Decide which example content ships with the template.
 - [ ] Document how someone replaces the example content with their own.
