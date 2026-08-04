@@ -38,7 +38,7 @@ everything required to view it.
       every supported field. Daniel's real content remains in `content/`
       while sections 3–5 are built against realistic data; the swap to
       starter content happens in section 6.
-- [ ] Document how someone replaces the example content with their own.
+- [x] Document how someone replaces the example content with their own.
 
 ### Complete when
 
