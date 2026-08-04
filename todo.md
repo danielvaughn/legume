@@ -13,7 +13,7 @@ a publishing API, a CLI, or a server runtime.
 - [x] Change Astro from server output to static output.
 - [x] Remove the Node server adapter and unused hosting adapters.
 - [x] Remove the registration and upload API routes.
-- [ ] Remove API-key authentication.
+- [x] Remove API-key authentication.
 - [ ] Remove Google Cloud Storage and all remote-content code.
 - [ ] Remove server-only dependencies.
 - [ ] Remove the Cloud Run build and deployment configuration.
