@@ -60,6 +60,8 @@ silently assume missing or hardcoded values.
 
 ## 4. Build the publishing model
 
+- [ ] Upgrade Astro to the current major version so content loading is built
+      on the modern Content Layer API rather than migrated later.
 - [ ] Adopt Astro content collections for build-time content loading.
 - [ ] Define Markdown frontmatter for title, summary, publication status,
       ordering, dates, and related résumé entries.
