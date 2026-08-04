@@ -1,8 +1,9 @@
-I'm a Floridian software engineer who has been building web applications for over a decade,
-mostly in startups across a variety of industries.
-I'm fullstack, but lean about 70% frontend.
+I'm Avery, a software engineer in Springfield. I like small tools, plain
+text, and systems that keep working when the network doesn't.
 
-Much of my personal work revolves around designer/developer collaboration.
-I've been building a suite of tools for this purpose,
-including a domain-specific programming language for designers,
-and a keyboard-driven UI design tool.
+This post has no frontmatter at all — it demonstrates that a bare Markdown
+file is a valid post. Its page title falls back to the résumé entry that
+references it (in this case, the bio).
+
+Outside of work I restore old radios and volunteer at the public library's
+repair café.

@@ -1,5 +1,7 @@
-title: Legumé
-description: The résumé and career stories of Daniel Vaughn.
-canonical_url: https://danielvaughn.dev
+title: Avery Example
+description: The résumé and career stories of Avery Example.
+canonical_url: https://example.com
 language: en
-author: Daniel Vaughn
+author: Avery Example
+# Optional: an image in public/ used for social sharing previews.
+# social_image: /social-card.png

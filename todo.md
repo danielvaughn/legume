@@ -112,15 +112,18 @@ career-focused publication on mobile, desktop, screen, and paper.
 
 ## 6. Make the template reusable
 
-- [ ] Separate publisher content from template source in the repository layout.
-- [ ] Provide minimal starter content that demonstrates every supported field.
-- [ ] Add documented theme tokens for color, typography, spacing, and identity.
-- [ ] Provide favicon, social-card, and metadata customization.
-- [ ] Document local development, content authoring, validation, building, and
+- [x] Separate publisher content from template source in the repository layout.
+- [x] Provide minimal starter content that demonstrates every supported field.
+      The starter publisher is the fictional Avery Example; Daniel's real
+      content lives in git history at commit 9979e53 and moves to a private
+      repo built from that commit.
+- [x] Add documented theme tokens for color, typography, spacing, and identity.
+- [x] Provide favicon, social-card, and metadata customization.
+- [x] Document local development, content authoring, validation, building, and
       static deployment.
-- [ ] Document the content schema with complete examples.
-- [ ] Add a clean-start checklist for new publishers.
-- [ ] Ensure the template name and example identity do not leak into generated
+- [x] Document the content schema with complete examples.
+- [x] Add a clean-start checklist for new publishers.
+- [x] Ensure the template name and example identity do not leak into generated
       sites unless configured.
 
 ### Complete when

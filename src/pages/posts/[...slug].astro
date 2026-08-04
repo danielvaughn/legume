@@ -34,7 +34,7 @@ const postTitle = getPostTitle(resume, post);
 
 <Layout title={postTitle} description={post.data.summary} type="article">
   <UserHeader bio={resume.bio} />
-  <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
+  <main class="max-w-content mx-auto px-5 pb-12 md:px-0">
     <section class="mt-6">
       {resumePartial.type === "job" && <JobHeader job={resumePartial.data} />}
 
@@ -58,7 +58,7 @@ const postTitle = getPostTitle(resume, post);
   }
 
   .md-content a {
-    @apply text-blue-700 hover:underline dark:text-blue-500;
+    @apply text-accent hover:underline dark:text-accent-bright;
   }
 
   .md-content p > code {

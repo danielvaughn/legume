@@ -30,6 +30,14 @@ const canonicalUrl = new URL(Astro.url.pathname, site.canonical_url);
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
+    {
+      site.social_image && (
+        <meta
+          property="og:image"
+          content={new URL(site.social_image, site.canonical_url)}
+        />
+      )
+    }
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -45,8 +53,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site.canonical_url);
 
 <style is:raw>
   body {
-    font-family: "EB Garamond Variable";
-    @apply sm:text-lg text-neutral-900 dark:bg-gray-900 dark:text-gray-400;
+    @apply font-body sm:text-lg text-neutral-900 dark:bg-gray-900 dark:text-gray-400;
     text-rendering: optimizeLegibility;
   }
 
