@@ -1,5 +1,5 @@
 import { parse } from 'yaml'
-import { getFileContents } from './storage'
+import { getFileContents } from './content'
 
 export async function getResume(filePath: string): Promise<Resume> {
   try {
