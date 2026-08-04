@@ -1,0 +1,18 @@
+# Invalid references and formats: a post reference with a leading slash,
+# a malformed email, and a malformed URL.
+bio:
+  name: Alex Example
+  email: not-an-email
+  phone: (555) 555-0100
+  linkedin: not-a-url
+  github: https://github.com/alexexample
+  post: /leading/slash
+
+jobs:
+  - company_name: Example Co
+    role: Developer
+    start_month: 1
+    start_year: 2020
+    highlights:
+      - title: A highlight
+        post: also/a/valid/shape/but/tested/elsewhere

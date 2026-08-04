@@ -1,0 +1,9 @@
+# Invalid: bio is missing email and phone; the job is missing role and
+# start dates.
+bio:
+  name: Alex Example
+  linkedin: https://www.linkedin.com/in/alexexample
+  github: https://github.com/alexexample
+
+jobs:
+  - company_name: Current Employer

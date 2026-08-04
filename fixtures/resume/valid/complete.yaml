@@ -1,0 +1,61 @@
+# Exercises every supported field, including all optional ones.
+bio:
+  name: Alex Example
+  email: alex@example.com
+  phone: (555) 555-0100
+  city: Springfield
+  state: IL
+  country: USA
+  linkedin: https://www.linkedin.com/in/alexexample
+  github: https://github.com/alexexample
+  website: https://alexexample.dev
+  post: bio
+  skills:
+    languages:
+      - TypeScript
+      - Python
+    frameworks:
+      - Astro
+
+jobs:
+  - company_name: Current Employer
+    company_url: https://example.com
+    role: Senior Developer
+    start_month: 3
+    start_year: 2021
+    end_month:
+    end_year:
+    post: current-summary
+    highlights:
+      - title: Shipped a thing
+        post: shipped-a-thing
+        skills:
+          - TypeScript
+      - title: A highlight with no post or skills
+  - company_name: Former Employer
+    role: Developer
+    start_month: 6
+    start_year: 2018
+    end_month: 2
+    end_year: 2021
+
+education:
+  - institution: State University
+    institution_url: https://example.edu
+    degree: Bachelor of Science
+    major: Computer Science
+    start_month: 9
+    start_year: 2014
+    end_month: 5
+    end_year: 2018
+
+projects:
+  - project_name: Sideproject
+    project_url: https://github.com/alexexample/sideproject
+    title: A small open-source tool
+    post: sideproject-story
+
+achievements:
+  - title: Won a hackathon
+    post: hackathon-story
+  - title: An achievement with no post

@@ -1,6 +1,7 @@
 import { parse } from 'yaml'
 import { getFileContents } from './content'
 import { resumeSchema, type Resume } from '../schemas/resume'
+import { validateContent } from './validate'
 
 export async function getResume(filePath: string): Promise<Resume> {
   const file = await getFileContents(filePath)
@@ -15,6 +16,8 @@ export async function getResume(filePath: string): Promise<Resume> {
 
     throw new Error(`Invalid résumé in content/resume.yaml:\n${issues}`)
   }
+
+  await validateContent(result.data)
 
   return result.data
 }

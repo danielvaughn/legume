@@ -243,4 +243,4 @@ projects:
   - project_name: Matry
     project_url: https://github.com/matry
     title: A suite of tools to help designers and developers collaborate
-    post: /projects/matry
+    post:

@@ -1,0 +1,25 @@
+# Invalid dates: a month outside 1-12, an end date before the start date,
+# and an end_month without a matching end_year.
+bio:
+  name: Alex Example
+  email: alex@example.com
+  phone: (555) 555-0100
+  linkedin: https://www.linkedin.com/in/alexexample
+  github: https://github.com/alexexample
+
+jobs:
+  - company_name: Bad Month Inc
+    role: Developer
+    start_month: 13
+    start_year: 2020
+  - company_name: Time Travel LLC
+    role: Developer
+    start_month: 6
+    start_year: 2020
+    end_month: 1
+    end_year: 2019
+  - company_name: Half An End Date Co
+    role: Developer
+    start_month: 1
+    start_year: 2018
+    end_month: 4

@@ -52,10 +52,10 @@ without modifying application code.
 - [x] Make optional and required fields explicit.
 - [x] Validate the résumé during development and builds.
 - [x] Report useful errors with the source file and invalid field.
-- [ ] Validate dates and render all date ranges from content data.
-- [ ] Validate that every referenced post and image exists.
-- [ ] Detect duplicate post slugs and broken internal links.
-- [ ] Add representative valid and invalid schema fixtures.
+- [x] Validate dates and render all date ranges from content data.
+- [x] Validate that every referenced post and image exists.
+- [x] Detect duplicate post slugs and broken internal links.
+- [x] Add representative valid and invalid schema fixtures.
 
 ### Complete when
 
