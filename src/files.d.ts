@@ -1,64 +1,16 @@
+// Content types are inferred from the Zod schemas in src/schemas/resume.ts,
+// which is the single source of truth for required and optional fields.
+// `Highlight` is deliberately absent here: the DOM lib already declares a
+// global `Highlight` (CSS Custom Highlight API), so consumers import it
+// from the schema module directly.
+type Bio = import('./schemas/resume').Bio
+type Job = import('./schemas/resume').Job
+type Education = import('./schemas/resume').Education
+type Project = import('./schemas/resume').Project
+type Achievement = import('./schemas/resume').Achievement
+type Resume = import('./schemas/resume').Resume
 
-interface Bio {
-  name: string
-  email: string
-  phone: string
-  city: string
-  state: string
-  country: string
-  linkedin: string
-  github: string
-  website: string
-  post: string | null
-  skills: {
-    [key:string]: string[]
-  } | null
-}
-
-interface Project {
-  project_name: string
-  project_url: string
-  title: string
-  post: string | null
-}
-
-interface Education {
-  institution: string
-  institution_url: string
-  degree: string
-  major: string
-  start_month: number
-  start_year: number
-  end_month: number | null
-  end_year: number | null
-}
-
-interface Highlight {
-  title: string
-  post: string | null
-  skills: string[]
-}
-
-interface Job {
-  company_name: string
-  company_url: string
-  role: string
-  start_month: number
-  start_year: number
-  end_month: number | null
-  end_year: number | null
-  post: string | null
-  highlights: Highlight[]
-}
-
-interface Resume {
-  bio: Bio
-  jobs: Job[]
-  education: Education[]
-  projects: Project[]
-}
-
-declare module "*.yaml" {
-  const resume: Resume;
-  export default resume;
+declare module '*.yaml' {
+  const resume: Resume
+  export default resume
 }

@@ -24,29 +24,11 @@ export async function getStaticPaths() {
 
 const { user, slug } = Astro.params;
 
-let post: string | null = null;
-try {
-  post = await getFileContents(`${user}/posts/${slug}.md`);
-} catch (error) {
-  return Astro.redirect("/404");
-}
-
-if (!post) {
-  return Astro.redirect("/404");
-}
-
+// Routes are generated from the content directory, so a missing file or an
+// invalid résumé is a content bug that must fail the build.
+const post = await getFileContents(`${user}/posts/${slug}.md`);
 const content = marked.parse(post);
-
-let resume: Resume | null = null;
-try {
-  resume = await getResume(`${user}/resume.yaml`);
-} catch (error) {
-  return Astro.redirect("/404");
-}
-
-if (!resume) {
-  return Astro.redirect("/404");
-}
+const resume = await getResume(`${user}/resume.yaml`);
 
 const resumePartial = getResumePartialByPost(resume, slug as string);
 const postTitle =

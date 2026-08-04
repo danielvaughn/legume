@@ -1,4 +1,6 @@
 
+import type { Highlight } from '../schemas/resume'
+
 interface BioData {
   type: 'bio'
   data: Bio

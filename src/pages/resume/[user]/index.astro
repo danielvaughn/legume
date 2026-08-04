@@ -12,13 +12,9 @@ export async function getStaticPaths() {
 }
 
 const { user } = Astro.params;
-let resume: Resume;
 
-try {
-  resume = await getResume(`${user}/resume.yaml`);
-} catch (error) {
-  return Astro.redirect("/404");
-}
+// Content problems must fail the build, not silently produce a broken page.
+const resume = await getResume(`${user}/resume.yaml`);
 
 const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 ---

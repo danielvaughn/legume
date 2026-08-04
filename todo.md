@@ -47,11 +47,11 @@ without modifying application code.
 
 ## 3. Model and validate the résumé
 
-- [ ] Define a schema for bio, contact details, skills, experience, education,
+- [x] Define a schema for bio, contact details, skills, experience, education,
       projects, achievements, and post references.
-- [ ] Make optional and required fields explicit.
-- [ ] Validate the résumé during development and builds.
-- [ ] Report useful errors with the source file and invalid field.
+- [x] Make optional and required fields explicit.
+- [x] Validate the résumé during development and builds.
+- [x] Report useful errors with the source file and invalid field.
 - [ ] Validate dates and render all date ranges from content data.
 - [ ] Validate that every referenced post and image exists.
 - [ ] Detect duplicate post slugs and broken internal links.
