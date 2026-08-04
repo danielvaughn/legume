@@ -49,4 +49,22 @@ const canonicalUrl = new URL(Astro.url.pathname, site.canonical_url);
     @apply sm:text-lg text-neutral-900 dark:bg-gray-900 dark:text-gray-400;
     text-rendering: optimizeLegibility;
   }
+
+  /* A clean paper résumé: black text, no link decoration, no screen chrome. */
+  @media print {
+    body {
+      font-size: 11pt;
+      color: #000;
+    }
+
+    a {
+      color: #000 !important;
+      text-decoration: none !important;
+    }
+
+    section,
+    article {
+      break-inside: avoid;
+    }
+  }
 </style>

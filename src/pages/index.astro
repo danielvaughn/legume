@@ -4,11 +4,23 @@ import UserHeader from "../components/UserHeader.astro";
 import Layout from "../layouts/Layout.astro";
 import { formatDateRange } from "../utils/format";
 import { getResume } from "../utils/resume";
+import {
+  getPostTitle,
+  getPublishedPosts,
+  isCurated,
+  sortPosts,
+} from "../utils/posts";
 
 // Content problems must fail the build, not silently produce a broken page.
 const resume = await getResume();
 
 const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
+
+// Surface writing the publisher has curated with frontmatter; the full list
+// lives at /posts.
+const featuredPosts = sortPosts(
+  (await getPublishedPosts()).filter(isCurated)
+).slice(0, 3);
 ---
 
 <Layout title={`${resume.bio.name} Résumé`}>
@@ -106,34 +118,136 @@ const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
       }
     </section>
 
-    <section class="mt-6">
-      <h2
-        class="uppercase font-bold border-black border-b-2 tracking-wide select-none"
-      >
-        Education
-      </h2>
+    {
+      resume.education.length > 0 && (
+        <section class="mt-6">
+          <h2 class="uppercase font-bold border-black border-b-2 tracking-wide select-none">
+            Education
+          </h2>
 
-      {
-        resume.education.map((edu: any) => {
-          const dates = formatDateRange(
-            edu.start_month,
-            edu.start_year,
-            edu.end_month || null,
-            edu.end_year || null
-          );
+          {resume.education.map((edu) => {
+            const dates = formatDateRange(
+              edu.start_month,
+              edu.start_year,
+              edu.end_month || null,
+              edu.end_year || null
+            );
 
-          return (
-            <article class="mt-5 font-bold flex flex-wrap items-baseline justify-between">
-              <span class="flex items-baseline">
-                <span class="whitespace-nowrap">{edu.degree}</span>
-                <span class="px-1 text-neutral-400">|</span>
-                <h3 class="whitespace-nowrap">{edu.institution}</h3>
-              </span>
-              <span class="whitespace-nowrap">{dates}</span>
+            return (
+              <article class="mt-5 font-bold flex flex-wrap items-baseline justify-between">
+                <span class="flex items-baseline">
+                  <span class="whitespace-nowrap">{edu.degree}</span>
+                  <span class="px-1 text-neutral-400">|</span>
+                  <h3 class="whitespace-nowrap">{edu.institution}</h3>
+                </span>
+                <span class="whitespace-nowrap">{dates}</span>
+              </article>
+            );
+          })}
+        </section>
+      )
+    }
+
+    {
+      resume.projects.length > 0 && (
+        <section class="mt-6">
+          <h2 class="uppercase font-bold border-black border-b-2 tracking-wide select-none">
+            Projects
+          </h2>
+
+          {resume.projects.map((project) => (
+            <article class="mt-4">
+              <header class="font-bold">
+                {project.project_url ? (
+                  <a
+                    href={project.project_url}
+                    target="_blank"
+                    class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                  >
+                    {project.project_name}
+                  </a>
+                ) : (
+                  <span>{project.project_name}</span>
+                )}
+              </header>
+              <p class="leading-snug">
+                {project.post ? (
+                  <a
+                    href={`/posts/${project.post}`}
+                    class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                  >
+                    {project.title}
+                  </a>
+                ) : (
+                  project.title
+                )}
+              </p>
             </article>
-          );
-        })
-      }
-    </section>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      resume.achievements.length > 0 && (
+        <section class="mt-6">
+          <h2 class="uppercase font-bold border-black border-b-2 tracking-wide select-none">
+            Achievements
+          </h2>
+
+          <ul class="list-disc pl-6 mt-2 leading-tight">
+            {resume.achievements.map((achievement) => (
+              <li class="my-1">
+                {achievement.post ? (
+                  <a
+                    href={`/posts/${achievement.post}`}
+                    class="hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                  >
+                    {achievement.title}
+                  </a>
+                ) : (
+                  achievement.title
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      featuredPosts.length > 0 && (
+        <section class="mt-6 print:hidden">
+          <h2 class="uppercase font-bold border-black border-b-2 tracking-wide select-none">
+            Writing
+          </h2>
+
+          <ul class="mt-2">
+            {featuredPosts.map((post) => (
+              <li class="my-2">
+                <a
+                  href={`/posts/${post.id}`}
+                  class="font-bold hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+                >
+                  {getPostTitle(resume, post)}
+                </a>
+                {post.data.summary && (
+                  <p class="text-neutral-600 dark:text-neutral-400 leading-snug">
+                    {post.data.summary}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="/posts"
+            class="text-blue-700 dark:text-blue-500 hover:underline"
+          >
+            All writing →
+          </a>
+        </section>
+      )
+    }
   </main>
 </Layout>

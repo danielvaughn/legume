@@ -54,6 +54,26 @@ const telHref = `tel:${bio.phone.replace(/[^+\d]/g, "")}`;
       </li>
     </ul>
   </nav>
+  <nav aria-label="Site" class="mt-2 print:hidden">
+    <ul class="flex items-baseline justify-center gap-x-5">
+      <li>
+        <a
+          href="/"
+          class="uppercase text-sm tracking-widest hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+        >
+          Résumé
+        </a>
+      </li>
+      <li>
+        <a
+          href="/posts"
+          class="uppercase text-sm tracking-widest hover:text-blue-700 hover:underline dark:hover:text-blue-500"
+        >
+          Writing
+        </a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <style>

@@ -35,6 +35,10 @@ order: 1             # manual ordering for post listings
 ---
 ```
 
+All published posts are listed at `/posts`. Posts given any descriptive
+frontmatter (title, summary, date, or order) are treated as curated and the
+top three also appear in the Writing section of the home page.
+
 Posts support standard Markdown: headings (with generated anchor links),
 lists, code blocks, links, and images. An emphasized line placed directly
 after an image (`*like this*`) renders as its caption. Raw HTML in Markdown

@@ -91,15 +91,19 @@ publish a linked story in the next build.
       `publisher_slug` setting is gone entirely.
 - [x] Decide whether the résumé is the home page or lives at `/resume`: the
       résumé is the home page.
-- [ ] Create a useful home page that explains the publisher and surfaces recent
-      or featured writing.
-- [ ] Render all supported résumé sections, including projects.
-- [ ] Add post index, post detail, not-found, and error states.
-- [ ] Add consistent navigation between the home page, résumé, and posts.
-- [ ] Make external links, contact links, and downloadable resources derive
+- [x] Create a useful home page that explains the publisher and surfaces recent
+      or featured writing. The résumé is the home page; posts curated with
+      frontmatter appear in its Writing section, and all posts are listed
+      at `/posts`.
+- [x] Render all supported résumé sections, including projects.
+- [x] Add post index, post detail, not-found, and error states.
+- [x] Add consistent navigation between the home page, résumé, and posts.
+- [x] Make external links, contact links, and downloadable resources derive
       from publisher content.
-- [ ] Verify responsive, dark-mode, keyboard, and screen-reader behavior.
-- [ ] Add print styles for a clean paper résumé.
+- [x] Verify responsive, dark-mode, keyboard, and screen-reader behavior.
+      Dark mode was dead (selector strategy with nothing toggling it) and now
+      follows the OS preference via the media strategy.
+- [x] Add print styles for a clean paper résumé.
 
 ### Complete when
 

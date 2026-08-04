@@ -102,3 +102,37 @@ export function getPostTitle(
       return resume.bio.name
   }
 }
+
+// Listing order: manual `order` first, then dated posts newest-first, then
+// the rest alphabetically by slug.
+export function sortPosts(
+  posts: CollectionEntry<'posts'>[],
+): CollectionEntry<'posts'>[] {
+  return [...posts].sort((a, b) => {
+    const aOrder = a.data.order
+    const bOrder = b.data.order
+
+    if (aOrder !== undefined || bOrder !== undefined) {
+      if (aOrder === undefined) return 1
+      if (bOrder === undefined) return -1
+      if (aOrder !== bOrder) return aOrder - bOrder
+    }
+
+    const aTime = a.data.date?.getTime()
+    const bTime = b.data.date?.getTime()
+
+    if (aTime === undefined && bTime === undefined) {
+      return a.id.localeCompare(b.id)
+    }
+    if (aTime === undefined) return 1
+    if (bTime === undefined) return -1
+    return bTime - aTime
+  })
+}
+
+// A post the publisher has curated for listings by giving it any
+// descriptive frontmatter at all.
+export function isCurated(post: CollectionEntry<'posts'>): boolean {
+  const { title, summary, date, order } = post.data
+  return Boolean(title || summary || date) || order !== undefined
+}
