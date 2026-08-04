@@ -47,9 +47,17 @@ if (!resume) {
 }
 
 const resumePartial = getResumePartialByPost(resume, slug as string);
+const postTitle =
+  resumePartial.type === "job"
+    ? `${resumePartial.data.role} at ${resumePartial.data.company_name}`
+    : resumePartial.type === "highlight"
+      ? resumePartial.data.highlight.title
+      : resumePartial.type === "project"
+        ? resumePartial.data.title
+        : resume.bio.name;
 ---
 
-<Layout title={`Legume`}>
+<Layout title={postTitle}>
   <UserHeader bio={resume.bio} />
   <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
     <section class="mt-6">

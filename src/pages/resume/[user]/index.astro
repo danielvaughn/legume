@@ -21,7 +21,7 @@ try {
 const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={`${resume.bio.name} Résumé`}>
   <UserHeader bio={resume.bio} />
   <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
     {hasSkills && <SkillDetails bio={resume.bio} />}

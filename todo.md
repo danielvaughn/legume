@@ -29,7 +29,7 @@ everything required to view it.
 
 - [x] Create one clearly documented directory for publisher-owned content.
 - [x] Move the résumé data, Markdown posts, and images into that directory.
-- [ ] Add site-level configuration for title, description, canonical URL,
+- [x] Add site-level configuration for title, description, canonical URL,
       language, and other metadata.
 - [ ] Remove hardcoded references to `danielvaughn` and personal contact data
       from components and routes.
