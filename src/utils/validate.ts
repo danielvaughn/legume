@@ -1,4 +1,4 @@
-import { access, readdir, readFile } from 'node:fs/promises'
+import { access, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { Resume } from '../schemas/resume'
 
@@ -47,14 +47,6 @@ function collectPostRefs(resume: Resume): PostRef[] {
   return refs
 }
 
-async function getPostSlugs(): Promise<string[]> {
-  const entries = await readdir(POSTS_DIR, { recursive: true })
-
-  return entries
-    .filter((entry) => entry.endsWith('.md'))
-    .map((entry) => entry.replace(/\.md$/, '').split(path.sep).join('/'))
-}
-
 // Matches markdown links and images: ![alt](target) and [text](target).
 const MARKDOWN_LINK = /!?\[[^\]]*\]\(([^)\s]+)(?:\s[^)]*)?\)/g
 
@@ -85,10 +77,19 @@ async function checkPostFiles(slugs: string[], problems: string[]) {
   }
 }
 
-export async function validateContent(resume: Resume): Promise<void> {
+export interface AvailablePosts {
+  published: string[]
+  drafts: string[]
+}
+
+export async function validateContent(
+  resume: Resume,
+  posts: AvailablePosts,
+): Promise<void> {
   const problems: string[] = []
-  const slugs = await getPostSlugs()
-  const slugSet = new Set(slugs)
+  const slugs = [...posts.published, ...posts.drafts]
+  const publishedSet = new Set(posts.published)
+  const draftSet = new Set(posts.drafts)
 
   // Duplicate slugs. Slugs are file paths so exact duplicates cannot occur,
   // but case-insensitive collisions break deploys to case-insensitive hosts.
@@ -105,7 +106,11 @@ export async function validateContent(resume: Resume): Promise<void> {
   }
 
   for (const ref of collectPostRefs(resume)) {
-    if (!slugSet.has(ref.slug)) {
+    if (draftSet.has(ref.slug)) {
+      problems.push(
+        `resume.yaml: ${ref.source} references draft post "${ref.slug}" (publish it or remove the reference before building for production)`,
+      )
+    } else if (!publishedSet.has(ref.slug)) {
       problems.push(
         `resume.yaml: ${ref.source} references missing post "${ref.slug}"`,
       )

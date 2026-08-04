@@ -2,15 +2,18 @@
 import UserHeader from "../../../../components/UserHeader.astro";
 import JobHeader from "../../../../components/JobHeader.astro";
 import Layout from "../../../../layouts/Layout.astro";
-import { getResumePartialByPost } from "../../../../utils/posts";
+import {
+  getPublishedPosts,
+  getResumePartialByPost,
+} from "../../../../utils/posts";
 import HighlightHeader from "../../../../components/HighlightHeader.astro";
 import { getResume } from "../../../../utils/resume";
 import { getSiteConfig } from "../../../../utils/site";
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const site = await getSiteConfig();
-  const posts = await getCollection("posts");
+  const posts = await getPublishedPosts();
 
   return posts.map((post) => ({
     params: { user: site.publisher_slug, slug: post.id },
@@ -27,14 +30,18 @@ const { Content } = await render(post);
 const resume = await getResume();
 
 const resumePartial = getResumePartialByPost(resume, slug as string);
+
+// Frontmatter title wins; otherwise derive one from the résumé entry that
+// references this post.
 const postTitle =
-  resumePartial.type === "job"
+  post.data.title ??
+  (resumePartial.type === "job"
     ? `${resumePartial.data.role} at ${resumePartial.data.company_name}`
     : resumePartial.type === "highlight"
       ? resumePartial.data.highlight.title
       : resumePartial.type === "project"
         ? resumePartial.data.title
-        : resume.bio.name;
+        : resume.bio.name);
 ---
 
 <Layout title={postTitle}>

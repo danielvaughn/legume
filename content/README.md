@@ -20,5 +20,25 @@ changing components, routes, utilities, or build configuration. Update
 author, and publisher slug. Legumé reads these files during development and
 compiles them into the static `dist/` directory during a production build.
 
+## Post frontmatter
+
+A bare Markdown file is a valid post. All frontmatter fields are optional:
+
+```yaml
+---
+title: Shown as the page title (falls back to the résumé entry that links here)
+summary: A short description of the post
+draft: true          # visible in development, excluded from production builds
+date: 2024-05-01     # publication date
+updated: 2024-06-01  # last-updated date
+order: 1             # manual ordering for post listings
+---
+```
+
+A résumé entry may not reference a draft post: the production build fails
+until the post is published or the reference is removed. Linking posts to
+résumé entries is done from `resume.yaml` (the `post:` fields), not from
+frontmatter, so the résumé stays the single source of truth.
+
 Application source must not contain publisher-specific identity, contact
 details, prose, or media.

@@ -1,5 +1,17 @@
 
+import { getCollection, type CollectionEntry } from 'astro:content'
 import type { Highlight } from '../schemas/resume'
+
+// Draft posts are visible during development but excluded from production
+// builds.
+export function isPublished(post: CollectionEntry<'posts'>): boolean {
+  return import.meta.env.DEV || !post.data.draft
+}
+
+export async function getPublishedPosts(): Promise<CollectionEntry<'posts'>[]> {
+  const posts = await getCollection('posts')
+  return posts.filter(isPublished)
+}
 
 interface BioData {
   type: 'bio'
