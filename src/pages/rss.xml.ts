@@ -26,7 +26,7 @@ export async function GET() {
     site: site.canonical_url,
     items: sorted.map((post) => ({
       title: getPostTitle(resume, post),
-      link: `/resume/${site.publisher_slug}/post/${post.id}/`,
+      link: `/posts/${post.id}/`,
       pubDate: post.data.date,
       description: post.data.summary,
     })),

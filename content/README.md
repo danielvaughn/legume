@@ -17,7 +17,7 @@ content/
 Publishers should be able to replace or edit files in this directory without
 changing components, routes, utilities, or build configuration. Update
 `site.yaml` with the site's title, description, canonical URL, language,
-author, and publisher slug. Legumé reads these files during development and
+and author. Legumé reads these files during development and
 compiles them into the static `dist/` directory during a production build.
 
 ## Post frontmatter

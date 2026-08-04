@@ -1,23 +1,21 @@
 ---
-import UserHeader from "../../../../components/UserHeader.astro";
-import JobHeader from "../../../../components/JobHeader.astro";
-import Layout from "../../../../layouts/Layout.astro";
+import UserHeader from "../../components/UserHeader.astro";
+import JobHeader from "../../components/JobHeader.astro";
+import Layout from "../../layouts/Layout.astro";
 import {
   getPostTitle,
   getPublishedPosts,
   getResumePartialByPost,
-} from "../../../../utils/posts";
-import HighlightHeader from "../../../../components/HighlightHeader.astro";
-import { getResume } from "../../../../utils/resume";
-import { getSiteConfig } from "../../../../utils/site";
+} from "../../utils/posts";
+import HighlightHeader from "../../components/HighlightHeader.astro";
+import { getResume } from "../../utils/resume";
 import { render } from "astro:content";
 
 export async function getStaticPaths() {
-  const site = await getSiteConfig();
   const posts = await getPublishedPosts();
 
   return posts.map((post) => ({
-    params: { user: site.publisher_slug, slug: post.id },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -56,7 +54,7 @@ const postTitle = getPostTitle(resume, post);
 
 <style is:global>
   .md-content p {
-    @apply mb-2 leading-snug text-pretty;
+    @apply mb-2 leading-snug text-lg text-pretty;
   }
 
   .md-content a {
@@ -76,12 +74,8 @@ const postTitle = getPostTitle(resume, post);
     @apply capitalize font-bold mt-5 tracking-wider;
   }
 
-  .md-content p {
-    @apply mb-2 leading-snug text-lg text-pretty;
-  }
-
-  .md-content a {
-    @apply text-blue-700 hover:underline dark:text-blue-500;
+  .md-content h3 {
+    @apply font-bold mt-4 tracking-wide;
   }
 
   .md-content ol {
@@ -90,10 +84,6 @@ const postTitle = getPostTitle(resume, post);
 
   .md-content ul {
     @apply list-disc pl-4;
-  }
-
-  .md-content h3 {
-    @apply font-bold mt-4 tracking-wide;
   }
 
   .md-content blockquote {

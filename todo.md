@@ -86,9 +86,11 @@ publish a linked story in the next build.
 
 ## 5. Design the single-publisher site
 
-- [ ] Replace `/resume/:user` with routes appropriate to one publisher per
-      build.
-- [ ] Decide whether the résumé is the home page or lives at `/resume`.
+- [x] Replace `/resume/:user` with routes appropriate to one publisher per
+      build: the résumé is `/` and posts live at `/posts/<slug>`. The
+      `publisher_slug` setting is gone entirely.
+- [x] Decide whether the résumé is the home page or lives at `/resume`: the
+      résumé is the home page.
 - [ ] Create a useful home page that explains the publisher and surfaces recent
       or featured writing.
 - [ ] Render all supported résumé sections, including projects.

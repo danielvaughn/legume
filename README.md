@@ -28,8 +28,8 @@ content boundary.
 To replace the example content with your own:
 
 1. **`content/site.yaml`** — set your site's title, description, canonical
-   URL, language, author name, and `publisher_slug`. The slug determines your
-   résumé's URL (`/resume/<publisher_slug>`).
+   URL, language, and author name. The résumé is the home page; posts live
+   at `/posts/<slug>`.
 2. **`content/resume.yaml`** — replace the example résumé with your bio,
    contact details, skills, jobs, and education. A job or highlight can link
    to a long-form story by setting its `post:` field to a post's slug.
