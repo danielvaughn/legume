@@ -1,23 +1,18 @@
-import { parse } from 'yaml'
-import { getFileContents } from './content'
-import { resumeSchema, type Resume } from '../schemas/resume'
+import { getEntry } from 'astro:content'
+import type { Resume } from '../schemas/resume'
 import { validateContent } from './validate'
 
-export async function getResume(filePath: string): Promise<Resume> {
-  const file = await getFileContents(filePath)
-  const data = parse(file)
+// The résumé is loaded through the `resume` content collection, so schema
+// validation happens at collection-load time. This adds the cross-content
+// checks (post references, duplicate slugs, broken links).
+export async function getResume(): Promise<Resume> {
+  const entry = await getEntry('resume', 'resume')
 
-  const result = resumeSchema.safeParse(data)
-
-  if (!result.success) {
-    const issues = result.error.issues
-      .map((issue) => `  ${issue.path.join('.') || '(root)'}: ${issue.message}`)
-      .join('\n')
-
-    throw new Error(`Invalid résumé in content/resume.yaml:\n${issues}`)
+  if (!entry) {
+    throw new Error('content/resume.yaml is missing')
   }
 
-  await validateContent(result.data)
+  await validateContent(entry.data)
 
-  return result.data
+  return entry.data
 }

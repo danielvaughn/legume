@@ -66,12 +66,12 @@ silently assume missing or hardcoded values.
 
 - [x] Upgrade Astro to the current major version so content loading is built
       on the modern Content Layer API rather than migrated later.
-- [ ] Adopt Astro content collections for build-time content loading.
+- [x] Adopt Astro content collections for build-time content loading.
 - [ ] Define Markdown frontmatter for title, summary, publication status,
       ordering, dates, and related résumé entries.
-- [ ] Generate every post route at build time.
+- [x] Generate every post route at build time.
 - [ ] Support draft posts in development while excluding them from production.
-- [ ] Support local images and optimized image output.
+- [x] Support local images and optimized image output.
 - [ ] Support safe Markdown rendering, including headings, lists, code, links,
       and captions.
 - [ ] Generate stable heading anchors and sensible page metadata.

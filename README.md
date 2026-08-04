@@ -37,8 +37,8 @@ To replace the example content with your own:
    A post's slug is its file path relative to `posts/`, without the `.md`
    extension (`posts/my-story.md` → slug `my-story`).
 4. **`content/images/`** — replace the example images with any referenced by
-   your posts. (Image rendering inside posts is still being wired up; see the
-   publishing-model section of `todo.md`.)
+   your posts. Reference them by relative path (e.g. `../images/photo.jpg`)
+   and they are optimized automatically at build time.
 
 Preview with `npm run dev`, then run `npm run build` and deploy the `dist/`
 directory to the static host of your choice.

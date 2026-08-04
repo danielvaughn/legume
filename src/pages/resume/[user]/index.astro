@@ -11,10 +11,8 @@ export async function getStaticPaths() {
   return [{ params: { user: site.publisher_slug } }];
 }
 
-const { user } = Astro.params;
-
 // Content problems must fail the build, not silently produce a broken page.
-const resume = await getResume(`${user}/resume.yaml`);
+const resume = await getResume();
 
 const hasSkills = Boolean(Object.keys(resume.bio.skills || []).length);
 ---

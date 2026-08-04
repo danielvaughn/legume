@@ -5,30 +5,26 @@ import Layout from "../../../../layouts/Layout.astro";
 import { getResumePartialByPost } from "../../../../utils/posts";
 import HighlightHeader from "../../../../components/HighlightHeader.astro";
 import { getResume } from "../../../../utils/resume";
-import { getFileContents } from "../../../../utils/content";
-import { marked } from "marked";
 import { getSiteConfig } from "../../../../utils/site";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const site = await getSiteConfig();
-  const posts = import.meta.glob("../../../../../content/posts/**/*.md");
+  const posts = await getCollection("posts");
 
-  const slugs = Object.keys(posts).map((file) =>
-    file.match(/\/posts\/(.+)\.md$/)?.[1]
-  );
-
-  return slugs.map((slug) => ({
-    params: { user: site.publisher_slug, slug },
+  return posts.map((post) => ({
+    params: { user: site.publisher_slug, slug: post.id },
+    props: { post },
   }));
 }
 
-const { user, slug } = Astro.params;
+const { slug } = Astro.params;
+const { post } = Astro.props;
 
-// Routes are generated from the content directory, so a missing file or an
-// invalid résumé is a content bug that must fail the build.
-const post = await getFileContents(`${user}/posts/${slug}.md`);
-const content = marked.parse(post);
-const resume = await getResume(`${user}/resume.yaml`);
+const { Content } = await render(post);
+
+// An invalid résumé is a content bug that must fail the build.
+const resume = await getResume();
 
 const resumePartial = getResumePartialByPost(resume, slug as string);
 const postTitle =
@@ -56,7 +52,7 @@ const postTitle =
         )
       }
 
-      <article class="mt-6 md-content" set:html={content} />
+      <article class="mt-6 md-content"><Content /></article>
     </section>
   </main>
 </Layout>

@@ -9,8 +9,3 @@ type Education = import('./schemas/resume').Education
 type Project = import('./schemas/resume').Project
 type Achievement = import('./schemas/resume').Achievement
 type Resume = import('./schemas/resume').Resume
-
-declare module '*.yaml' {
-  const resume: Resume
-  export default resume
-}
