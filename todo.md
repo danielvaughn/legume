@@ -33,7 +33,11 @@ everything required to view it.
       language, and other metadata.
 - [x] Remove hardcoded references to `danielvaughn` and personal contact data
       from components and routes.
-- [ ] Decide which example content ships with the template.
+- [x] Decide which example content ships with the template: a fictional
+      starter publisher with a small number of jobs and posts that exercises
+      every supported field. Daniel's real content remains in `content/`
+      while sections 3–5 are built against realistic data; the swap to
+      starter content happens in section 6.
 - [ ] Document how someone replaces the example content with their own.
 
 ### Complete when
