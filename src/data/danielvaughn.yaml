@@ -41,7 +41,7 @@ jobs:
     post: next-era-summary
     highlights:
       - title: Introduced audits and other mechanisms to improve platform security
-        post: next-era-audits
+        post: nee/next-era-audits
         skills:
           - Python
           - Bash
