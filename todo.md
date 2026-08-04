@@ -27,7 +27,7 @@ everything required to view it.
 
 ## 2. Define the content boundary
 
-- [ ] Create one clearly documented directory for publisher-owned content.
+- [x] Create one clearly documented directory for publisher-owned content.
 - [ ] Move the résumé data, Markdown posts, and images into that directory.
 - [ ] Add site-level configuration for title, description, canonical URL,
       language, and other metadata.
