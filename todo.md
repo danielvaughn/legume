@@ -17,7 +17,7 @@ a publishing API, a CLI, or a server runtime.
 - [x] Remove Google Cloud Storage and all remote-content code.
 - [x] Remove server-only dependencies.
 - [x] Remove the Cloud Run build and deployment configuration.
-- [ ] Confirm `npm run build` produces a self-contained `dist/` directory.
+- [x] Confirm `npm run build` produces a self-contained `dist/` directory.
 - [ ] Confirm the built site works when served by a basic static file server.
 
 ### Complete when

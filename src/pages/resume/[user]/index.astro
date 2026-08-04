@@ -5,6 +5,16 @@ import Layout from "../../../layouts/Layout.astro";
 import { formatDateRange } from "../../../utils/format";
 import { getResume } from "../../../utils/resume";
 
+export function getStaticPaths() {
+  const resumes = import.meta.glob("../../../data/*.yaml");
+
+  return Object.keys(resumes).map((file) => ({
+    params: {
+      user: file.split("/").pop()?.replace(/\.yaml$/, ""),
+    },
+  }));
+}
+
 const { user } = Astro.params;
 let resume: Resume;
 
