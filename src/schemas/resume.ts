@@ -57,14 +57,14 @@ function checkDateRange(value: DateRange, ctx: z.RefinementCtx) {
 
 export const bioSchema = z.object({
   name: z.string().min(1),
-  email: z.string().email(),
+  email: z.email(),
   phone: z.string().min(1),
   city: z.string().optional(),
   state: z.string().optional(),
   country: z.string().optional(),
-  linkedin: z.string().url(),
-  github: z.string().url(),
-  website: z.string().url().optional(),
+  linkedin: z.url(),
+  github: z.url(),
+  website: z.url().optional(),
   post: postRef.nullish().default(null),
   skills: z.record(z.string(), z.array(z.string())).nullish().default(null),
 })
@@ -78,7 +78,7 @@ export const highlightSchema = z.object({
 export const jobSchema = z
   .object({
     company_name: z.string().min(1),
-    company_url: z.string().url().nullish().default(null),
+    company_url: z.url().nullish().default(null),
     role: z.string().min(1),
     ...dateRange,
     post: postRef.nullish().default(null),
@@ -89,7 +89,7 @@ export const jobSchema = z
 export const educationSchema = z
   .object({
     institution: z.string().min(1),
-    institution_url: z.string().url().nullish().default(null),
+    institution_url: z.url().nullish().default(null),
     degree: z.string().min(1),
     major: z.string().optional(),
     ...dateRange,
@@ -98,7 +98,7 @@ export const educationSchema = z
 
 export const projectSchema = z.object({
   project_name: z.string().min(1),
-  project_url: z.string().url().nullish().default(null),
+  project_url: z.url().nullish().default(null),
   title: z.string().min(1),
   post: postRef.nullish().default(null),
 })

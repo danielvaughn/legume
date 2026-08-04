@@ -1,14 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import yaml from "@rollup/plugin-yaml";
 
+// Tailwind runs as a PostCSS plugin (postcss.config.mjs); Astro picks the
+// config up automatically, so no integration is needed.
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
   output: "static",
-  security: {
-    checkOrigin: true
-  },
   vite: {
     plugins: [yaml()]
   },

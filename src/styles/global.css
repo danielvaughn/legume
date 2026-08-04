@@ -1,0 +1,6 @@
+/* Tailwind's global layers. The deprecated @astrojs/tailwind integration
+   used to inject these automatically; with Tailwind running as a plain
+   PostCSS plugin they are imported once here, by the layout. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
