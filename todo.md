@@ -73,10 +73,11 @@ silently assume missing or hardcoded values.
 - [x] Generate every post route at build time.
 - [x] Support draft posts in development while excluding them from production.
 - [x] Support local images and optimized image output.
-- [ ] Support safe Markdown rendering, including headings, lists, code, links,
-      and captions.
-- [ ] Generate stable heading anchors and sensible page metadata.
-- [ ] Add an RSS or Atom feed for published writing.
+- [x] Support safe Markdown rendering, including headings, lists, code, links,
+      and captions. Raw HTML renders as-is: post content is publisher-owned
+      and trusted by design.
+- [x] Generate stable heading anchors and sensible page metadata.
+- [x] Add an RSS or Atom feed for published writing.
 
 ### Complete when
 

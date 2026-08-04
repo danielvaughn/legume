@@ -35,6 +35,13 @@ order: 1             # manual ordering for post listings
 ---
 ```
 
+Posts support standard Markdown: headings (with generated anchor links),
+lists, code blocks, links, and images. An emphasized line placed directly
+after an image (`*like this*`) renders as its caption. Raw HTML in Markdown
+is rendered as-is — the publisher owns this repository, so post content is
+trusted by design. Published posts are also listed in an RSS feed at
+`/rss.xml`.
+
 A résumé entry may not reference a draft post: the production build fails
 until the post is published or the reference is removed. Linking posts to
 résumé entries is done from `resume.yaml` (the `post:` fields), not from

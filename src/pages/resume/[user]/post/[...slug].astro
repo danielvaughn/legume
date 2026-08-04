@@ -3,6 +3,7 @@ import UserHeader from "../../../../components/UserHeader.astro";
 import JobHeader from "../../../../components/JobHeader.astro";
 import Layout from "../../../../layouts/Layout.astro";
 import {
+  getPostTitle,
   getPublishedPosts,
   getResumePartialByPost,
 } from "../../../../utils/posts";
@@ -30,21 +31,10 @@ const { Content } = await render(post);
 const resume = await getResume();
 
 const resumePartial = getResumePartialByPost(resume, slug as string);
-
-// Frontmatter title wins; otherwise derive one from the résumé entry that
-// references this post.
-const postTitle =
-  post.data.title ??
-  (resumePartial.type === "job"
-    ? `${resumePartial.data.role} at ${resumePartial.data.company_name}`
-    : resumePartial.type === "highlight"
-      ? resumePartial.data.highlight.title
-      : resumePartial.type === "project"
-        ? resumePartial.data.title
-        : resume.bio.name);
+const postTitle = getPostTitle(resume, post);
 ---
 
-<Layout title={postTitle}>
+<Layout title={postTitle} description={post.data.summary} type="article">
   <UserHeader bio={resume.bio} />
   <main class="max-w-3xl mx-auto px-5 pb-12 md:px-0">
     <section class="mt-6">
@@ -98,7 +88,24 @@ const postTitle =
     @apply list-decimal pl-4;
   }
 
+  .md-content ul {
+    @apply list-disc pl-4;
+  }
+
+  .md-content h3 {
+    @apply font-bold mt-4 tracking-wide;
+  }
+
+  .md-content blockquote {
+    @apply border-l-4 border-neutral-300 pl-3 italic my-3 dark:border-neutral-600;
+  }
+
   .md-content img {
     @apply block mx-auto my-4 max-w-full h-auto;
+  }
+
+  /* An emphasized line directly after an image reads as its caption. */
+  .md-content img + em {
+    @apply block text-center text-sm text-neutral-600 -mt-2 mb-4 dark:text-neutral-400;
   }
 </style>

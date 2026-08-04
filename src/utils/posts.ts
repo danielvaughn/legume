@@ -80,3 +80,25 @@ export function getResumePartialByPost(resume: Resume, post: string): ResumePart
 
   return result;
 }
+
+// The title shown for a post: frontmatter wins, otherwise derive one from
+// the résumé entry that references the post.
+export function getPostTitle(
+  resume: Resume,
+  post: CollectionEntry<'posts'>,
+): string {
+  if (post.data.title) return post.data.title
+
+  const partial = getResumePartialByPost(resume, post.id)
+
+  switch (partial.type) {
+    case 'job':
+      return `${partial.data.role} at ${partial.data.company_name}`
+    case 'highlight':
+      return partial.data.highlight.title
+    case 'project':
+      return partial.data.title
+    case 'bio':
+      return resume.bio.name
+  }
+}

@@ -5,11 +5,14 @@ import { getSiteConfig } from "../utils/site";
 
 interface Props {
   title?: string;
+  description?: string;
+  type?: "website" | "article";
 }
 
-const { title } = Astro.props;
+const { title, description, type = "website" } = Astro.props;
 const site = await getSiteConfig();
 const pageTitle = title ? `${site.title} - ${title}` : site.title;
+const pageDescription = description ?? site.description;
 const canonicalUrl = new URL(Astro.url.pathname, site.canonical_url);
 ---
 
@@ -17,16 +20,22 @@ const canonicalUrl = new URL(Astro.url.pathname, site.canonical_url);
 <html lang={site.language}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={site.description} />
+    <meta name="description" content={pageDescription} />
     <meta name="author" content={site.author} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={site.description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.title}
+      href={new URL("rss.xml", site.canonical_url)}
+    />
     <title>{pageTitle}</title>
   </head>
   <body>
