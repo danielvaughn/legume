@@ -9,19 +9,15 @@ import { getFileContents } from "../../../../utils/content";
 import { marked } from "marked";
 
 export function getStaticPaths() {
-  const resumes = import.meta.glob("../../../../data/*.yaml");
-  const posts = import.meta.glob("../../../../content/posts/**/*.md");
+  const posts = import.meta.glob("../../../../../content/posts/**/*.md");
 
-  const users = Object.keys(resumes).map((file) =>
-    file.split("/").pop()?.replace(/\.yaml$/, "")
-  );
   const slugs = Object.keys(posts).map((file) =>
     file.match(/\/posts\/(.+)\.md$/)?.[1]
   );
 
-  return users.flatMap((user) =>
-    slugs.map((slug) => ({ params: { user, slug } }))
-  );
+  return slugs.map((slug) => ({
+    params: { user: "danielvaughn", slug },
+  }));
 }
 
 const { user, slug } = Astro.params;

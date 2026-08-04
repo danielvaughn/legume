@@ -6,13 +6,7 @@ import { formatDateRange } from "../../../utils/format";
 import { getResume } from "../../../utils/resume";
 
 export function getStaticPaths() {
-  const resumes = import.meta.glob("../../../data/*.yaml");
-
-  return Object.keys(resumes).map((file) => ({
-    params: {
-      user: file.split("/").pop()?.replace(/\.yaml$/, ""),
-    },
-  }));
+  return [{ params: { user: "danielvaughn" } }];
 }
 
 const { user } = Astro.params;

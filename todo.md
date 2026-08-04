@@ -28,7 +28,7 @@ everything required to view it.
 ## 2. Define the content boundary
 
 - [x] Create one clearly documented directory for publisher-owned content.
-- [ ] Move the résumé data, Markdown posts, and images into that directory.
+- [x] Move the résumé data, Markdown posts, and images into that directory.
 - [ ] Add site-level configuration for title, description, canonical URL,
       language, and other metadata.
 - [ ] Remove hardcoded references to `danielvaughn` and personal contact data
