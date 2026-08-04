@@ -10,9 +10,9 @@ a publishing API, a CLI, or a server runtime.
 
 ## 1. Establish the static architecture
 
-- [ ] Change Astro from server output to static output.
-- [ ] Remove the Node server adapter and unused hosting adapters.
-- [ ] Remove the registration and upload API routes.
+- [x] Change Astro from server output to static output.
+- [x] Remove the Node server adapter and unused hosting adapters.
+- [x] Remove the registration and upload API routes.
 - [ ] Remove API-key authentication.
 - [ ] Remove Google Cloud Storage and all remote-content code.
 - [ ] Remove server-only dependencies.
